@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const { sequenceOf, whitespace, choice, char, anyChar, letters, digit, digits, many, everyCharUntil } = require('arcsecond')
+const { sequenceOf, whitespace, endOfInput, anyOfString, choice, char, anyChar, letters, digit, many, everyCharUntil } = require('arcsecond')
 const file = fs.readFileSync('./hello-world.tal').toString()
 
 const labels = []
@@ -20,17 +20,21 @@ const label = sequenceOf([char('@'), letters]).map(e => ({ type: 'label', value:
 const macro = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')]).map(e => ({ type: 'macro', value: e }))
 const address = sequenceOf([char('|'), everyCharUntil(whitespace)]).map(e => ({ type: 'address', value: e }))
 const comment = sequenceOf([char('('), everyCharUntil(char(')')), char(')')]).map(e => ({ type: 'comment', value: e }))
-const literal = sequenceOf([char('\''), anyChar]).map(e => ({ type: 'literal', value: e }))
+const literalChar = sequenceOf([char('\''), anyChar]).map(e => ({ type: 'literalChar', value: e }))
+const hexadecimal = anyOfString('0123456789abdcef')
+const literalNumber = sequenceOf([hexadecimal, hexadecimal]).map(e => ({ type: 'literalNumber', value: e }))
 const push = sequenceOf([char('#'), digit, digit]).map(e => ({ type: 'push', value: e }))
 const word = letters.map(e => ({ type: 'word', value: e }))
 
-const parser = many(choice([comment, label, macro, address, literal, push, word, digits, whitespace]))
+const parser = sequenceOf([many(choice([comment, label, macro, address, literalChar, literalNumber, push, word, whitespace])), endOfInput])
 
 const assemble = (code) => {
-  let ast = parser.run(code).result
+  const context = parser.run(code)
+  if (context.isError) throw Error(context.error) // TODO pretty print this
+  let ast = context.result[0] // Since result[1] is endOfInput
   ast = ast.filter(e => e.type !== undefined) // Filter non-token
   return ast.map((e, i) => {
-    console.log('TYPE', e)
+    console.log(e)
     switch (e.type) {
       case 'comment':
         return ''
@@ -38,13 +42,15 @@ const assemble = (code) => {
         labels[e.value[1]] = i
         return ''
       case 'macro':
-        macros.set(e.value[1],assemble(e.value[4]))
-        return
+        macros.set(e.value[1], assemble(e.value[4]))
+        return ''
       case 'address':
       // TODO
         return ''
-      case 'literal':
+      case 'literalChar':
         return e.value[1].charCodeAt(0).toString(16)
+      case 'literalNumber':
+        return e.value[0] + e.value[1]
       case 'push':
         return '80' + e.value[1] + e.value[2]
       case 'word':
