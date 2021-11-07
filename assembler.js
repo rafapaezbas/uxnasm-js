@@ -53,11 +53,12 @@ const mainMemoryPad = sequenceOf([char('|'), exactly(4)(hexadecimal)]).map(e => 
 const comment = sequenceOf([char('('), everyCharUntil(char(')')), char(')')]).map(e => ({ type: 'comment', value: e }))
 const literalNumber = sequenceOf([hexadecimal, hexadecimal]).map(e => ({ type: 'literalNumber', value: e }))
 const push = sequenceOf([char('#'), hexadecimal, hexadecimal]).map(e => ({ type: 'push', value: e }))
+const pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal]).map(e => ({ type: 'pushShort', value: e }))
 const opModifier = choice([char('k'), char('r'), char('2')])
 const ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier)]).map(e => ({ type: 'op', value: e }))
 const word = letters.map(e => ({ type: 'word', value: e }))
 
-const parser = sequenceOf([many(choice([comment, device, macro, sublabelAddress, pad, label, mainMemoryPad, ioPad, literalChar, literalNumber, push, ops, word, whitespace])), endOfInput])
+const parser = sequenceOf([many(choice([comment, device, macro, sublabelAddress, pad, label, mainMemoryPad, ioPad, literalChar, literalNumber, pushShort, push, ops, word, whitespace])), endOfInput])
 
 const assemble = (code) => {
   const context = parser.run(code)
@@ -92,6 +93,8 @@ const assemble = (code) => {
         return e.value[0] + e.value[1]
       case 'push':
         return '80' + e.value[1] + e.value[2]
+      case 'pushShort':
+        return 'a0' + e.value[1] + e.value[2] + e.value[3] + e.value[4]
       case 'op':
         return op(e.value)
       case 'word':
