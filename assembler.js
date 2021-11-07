@@ -27,6 +27,7 @@ const addIODevice = (e) => {
     }
     if (f.type === 'pad') {
       pad = (parseInt(pad, 16) + parseInt(f.value[1], 16)).toString(16)
+      if (pad.length === 1) pad = '0' + pad
     }
   })
 }
