@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const { sequenceOf, whitespace, endOfInput, anyOfString, choice, char, anyChar, letters, digit, many, everyCharUntil } = require('arcsecond')
+const { sequenceOf, whitespace, endOfInput, anyOfString, choice, char, anyChar, letters, digit, many, exactly, everyCharUntil } = require('arcsecond')
 const file = fs.readFileSync('./hello-world.tal').toString()
 
 const labels = []
@@ -16,17 +16,18 @@ const hexOpCodes = new Map()
 opCodes.forEach((op, i) => hexOpCodes.set(op, toHex(i)))
 hexOpCodes.set('LIT', '80')
 
-const label = sequenceOf([char('@'), letters]).map(e => ({ type: 'label', value: e }))
-const macro = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')]).map(e => ({ type: 'macro', value: e }))
-const address = sequenceOf([char('|'), everyCharUntil(whitespace)]).map(e => ({ type: 'address', value: e }))
-const comment = sequenceOf([char('('), everyCharUntil(char(')')), char(')')]).map(e => ({ type: 'comment', value: e }))
-const literalChar = sequenceOf([char('\''), anyChar]).map(e => ({ type: 'literalChar', value: e }))
 const hexadecimal = anyOfString('0123456789abdcef')
+const label = sequenceOf([char('@'), letters]).map(e => ({ type: 'label', value: e }))
+const literalChar = sequenceOf([char('\''), anyChar]).map(e => ({ type: 'literalChar', value: e }))
+const macro = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')]).map(e => ({ type: 'macro', value: e }))
+const mainMemoryPad = sequenceOf([char('|'), exactly(4)(hexadecimal)]).map(e => ({ type: 'mainMemoryPad', value: e }))
+const ioPad = sequenceOf([char('|'), exactly(2)(hexadecimal)]).map(e => ({ type: 'ioPad', value: e }))
+const comment = sequenceOf([char('('), everyCharUntil(char(')')), char(')')]).map(e => ({ type: 'comment', value: e }))
 const literalNumber = sequenceOf([hexadecimal, hexadecimal]).map(e => ({ type: 'literalNumber', value: e }))
 const push = sequenceOf([char('#'), digit, digit]).map(e => ({ type: 'push', value: e }))
 const word = letters.map(e => ({ type: 'word', value: e }))
 
-const parser = sequenceOf([many(choice([comment, label, macro, address, literalChar, literalNumber, push, word, whitespace])), endOfInput])
+const parser = sequenceOf([many(choice([comment, label, macro, mainMemoryPad, ioPad, literalChar, literalNumber, push, word, whitespace])), endOfInput])
 
 const assemble = (code) => {
   const context = parser.run(code)
@@ -44,7 +45,10 @@ const assemble = (code) => {
       case 'macro':
         macros.set(e.value[1], assemble(e.value[4]))
         return ''
-      case 'address':
+      case 'mainMemoryPad':
+      // TODO
+        return ''
+      case 'ioPad':
       // TODO
         return ''
       case 'literalChar':
