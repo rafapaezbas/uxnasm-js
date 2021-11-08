@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "brittle test/*.js",
     "fix": "standard --fix"
   },
   "keywords": [],
@@ -14,6 +14,7 @@
     "arcsecond": "^4.1.0"
   },
   "devDependencies": {
+    "brittle": "^1.6.0",
     "standard": "^16.0.4"
   }
 }

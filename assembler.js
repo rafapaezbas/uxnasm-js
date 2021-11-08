@@ -1,7 +1,6 @@
 const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyChar, possibly, letters, many, exactly, everyCharUntil } = require('arcsecond')
 const fs = require('fs')
 const path = require('path')
-const file = fs.readFileSync('./hello-world.tal').toString()
 
 const labels = new Map()
 const macros = new Map()
@@ -56,7 +55,7 @@ const literalNumber = sequenceOf([hexadecimal, hexadecimal]).map(e => ({ type: '
 const push = sequenceOf([char('#'), hexadecimal, hexadecimal]).map(e => ({ type: 'push', value: e }))
 const pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal]).map(e => ({ type: 'pushShort', value: e }))
 const opModifier = choice([char('k'), char('r'), char('2')])
-const ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier)]).map(e => ({ type: 'op', value: e }))
+const ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace]).map(e => ({ type: 'op', value: e }))
 const word = letters.map(e => ({ type: 'word', value: e }))
 
 const parser = sequenceOf([many(choice([comment, device, macro, sublabelAddress, pad, label, mainMemoryPad, ioPad, literalChar, literalNumber, pushShort, push, ops, word, whitespace])), endOfInput])
@@ -99,6 +98,8 @@ const assemble = (code) => {
       case 'op':
         return op(e.value)
       case 'word':
+		    console.log("WORD",e)
+		    console.log("VALUE", macros.get(e.value))
         return macros.get(e.value) // TODO throw if word doesnt exist
       default:
     }
@@ -106,7 +107,4 @@ const assemble = (code) => {
   }).join('')
 }
 
-const program = assemble(file)
-console.log(program)
-console.log(labels)
-fs.writeFileSync(path.resolve('./test.rom'), Buffer.from(program, 'hex'))
+module.exports = assemble
