@@ -1,7 +1,9 @@
-const test = require('brittle')
+const {test, solo } = require('brittle')
 const fs = require('fs').promises
 const path = require('path')
 const assemble = require('../assembler.js')
+
+//solo()
 
 test('Macros, devices and basics', async (assert) => {
   const rom = await fs.readFile(path.join(__dirname, 'roms', '1.rom'))
@@ -18,5 +20,11 @@ test('Shorts and ops short mode', async (assert) => {
 test('Words not only letters', async (assert) => {
   const rom = await fs.readFile(path.join(__dirname, 'roms', '3.rom'))
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '3.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
+test('Labels in main menory', async (assert) => {
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '4.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '4.tal'))).toString()
   assert.is(assemble(code), rom.toString('hex'))
 })

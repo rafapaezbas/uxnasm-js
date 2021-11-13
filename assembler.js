@@ -2,10 +2,19 @@ const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyC
 
 const labels = new Map()
 const macros = new Map()
+const nonResolvedLiteralAbsoluteAddreses = []
 
 const toHex = (i) => {
   i = i.toString(16)
   return i.length < 2 ? '0' + i : i
+}
+
+const replaceUnresolvedAddresses = (s) => {
+	nonResolvedLiteralAbsoluteAddreses.reverse()
+	while(s.indexOf("__") !== -1){
+		s = s.replace("__",labels.get(nonResolvedLiteralAbsoluteAddreses.pop()))
+	}
+	return s
 }
 
 const opCodes = ['BRK', 'INC', 'POP', 'DUP', 'NIP', 'SWP', 'OVR', 'ROT', 'EQU', 'NEQ', 'GTH', 'LTH', 'JMP', 'JCN', 'JSR', 'STH', 'LDZ', 'STZ', 'LDR', 'STR', 'LDA', 'STA', 'DEI', 'DEO', 'ADD', 'SUB', 'MUL', 'DIV', 'AND', 'ORA', 'EOR', 'SFT']
@@ -36,14 +45,14 @@ tokens.push = sequenceOf([char('#'), hexadecimal, hexadecimal])
 tokens.pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal])
 tokens.ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace])
 tokens.word = many1(allowedChars)
+tokens.literalAbsoluteAddress = sequenceOf([char(';'),many1(allowedChars)])
 
-const inCodeTokens = ['word', 'ops', 'pushShort', 'push', 'literalNumber', 'comment', 'mainMemoryPad', 'macro', 'literalChar', 'sublabelAddress', 'device']
+const inCodeTokens = ['word', 'ops', 'pushShort', 'push', 'literalNumber', 'comment', 'mainMemoryPad', 'macro', 'literalChar', 'sublabelAddress', 'device', 'literalAbsoluteAddress']
 inCodeTokens.forEach(token => {
-  console.log(token)
   tokens[token] = tokens[token].map(e => ({ type: token, value: e }))
 })
 
-const parser = sequenceOf([many(choice([tokens.comment, tokens.device, tokens.macro, tokens.sublabelAddress, tokens.pad, tokens.label, tokens.mainMemoryPad, tokens.ioPad, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
+const parser = sequenceOf([many(choice([tokens.comment, tokens.device, tokens.macro, tokens.sublabelAddress, tokens.pad, tokens.label,tokens.literalAbsoluteAddress, tokens.mainMemoryPad, tokens.ioPad, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
 
 const f = []
 
@@ -51,8 +60,8 @@ f.comment = (e) => {
   return undefined
 }
 
-f.label = (e, i) => {
-  labels.set(e.value[1], i)
+f.label = (e, i, acc) => {
+  labels.set(e.value[1], toHex(acc.length / 2))
   return undefined
 }
 
@@ -117,18 +126,34 @@ f.word = (e) => {
   return macros.get(e.value.join('')) // TODO throw if word doesnt exist
 }
 
+f.literalAbsoluteAddress = (e,i,acc) => {
+	const label = e.value[1].join('')
+	if(labels.get(label) !== undefined){
+		return labels.get(label)
+	}else{
+		nonResolvedLiteralAbsoluteAddreses.push(label)
+		return "a001__"
+	}
+}
+
+f.pad = (e,i,acc) => {
+	const pad = parseInt(e.value[1].join(''), 10)
+	return "0".repeat(pad * 2)
+}
+
 const assemble = (code) => {
   const context = parser.run(code)
   if (context.isError) throw Error(context.error) // TODO pretty print this
   let ast = context.result[0] // Since result[1] is endOfInput
   ast = ast.filter(e => e.type !== undefined) // Filter non-token
-  return ast.map((e, i) => {
-    if (f[e.type] !== undefined) {
-      return f[e.type](e, i)
+  const firstPass = ast.reduce((acc,e, i) => {
+    if (f[e.type] !== undefined && f[e.type](e,i,acc) !== undefined) {
+      return acc + f[e.type](e, i, acc)
     } else {
-      return undefined
+      return acc
     }
-  }).join('')
+  },"")
+  return replaceUnresolvedAddresses(firstPass)
 }
 
 module.exports = assemble
