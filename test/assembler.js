@@ -14,3 +14,9 @@ test('Shorts and ops short mode', async (assert) => {
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '2.tal'))).toString()
   assert.is(assemble(code), rom.toString('hex'))
 })
+
+test('Words not only letters', async (assert) => {
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '3.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '3.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})

@@ -1,4 +1,4 @@
-const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyChar, possibly, letters, many, exactly, everyCharUntil } = require('arcsecond')
+const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyChar, possibly, letters, many, many1, exactly, everyCharUntil } = require('arcsecond')
 
 const labels = new Map()
 const macros = new Map()
@@ -17,6 +17,7 @@ opCodes.push('LIT')
 const tokens = []
 
 const hexadecimal = anyOfString('0123456789abdcef')
+const allowedChars = anyOfString('abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ-')
 const opModifier = choice([char('k'), char('r'), char('2')])
 const sublabel = sequenceOf([char('&'), letters]).map(e => ({ type: 'sublabel', value: e }))
 const deviceReadability = many(choice([whitespace, char('['), char(']')]))
@@ -34,10 +35,10 @@ tokens.literalNumber = sequenceOf([hexadecimal, hexadecimal])
 tokens.push = sequenceOf([char('#'), hexadecimal, hexadecimal])
 tokens.pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal])
 tokens.ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace])
-tokens.word = letters
+tokens.word = many1(allowedChars)
 
-const x = ['word', 'ops', 'pushShort', 'push', 'literalNumber', 'comment', 'mainMemoryPad', 'macro', 'literalChar', 'sublabelAddress', 'device']
-x.forEach(token => {
+const inCodeTokens = ['word', 'ops', 'pushShort', 'push', 'literalNumber', 'comment', 'mainMemoryPad', 'macro', 'literalChar', 'sublabelAddress', 'device']
+inCodeTokens.forEach(token => {
   console.log(token)
   tokens[token] = tokens[token].map(e => ({ type: token, value: e }))
 })
@@ -113,7 +114,7 @@ f.ops = (e) => {
 }
 
 f.word = (e) => {
-  return macros.get(e.value) // TODO throw if word doesnt exist
+  return macros.get(e.value.join('')) // TODO throw if word doesnt exist
 }
 
 const assemble = (code) => {
