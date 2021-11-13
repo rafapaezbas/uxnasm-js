@@ -47,18 +47,24 @@ const deviceReadability = many(choice([whitespace, char('['), char(']')]))
 tokens['label'] = sequenceOf([char('@'), letters]).map(e => ({ type: 'label', value: e }))
 tokens['ioPad'] = sequenceOf([char('|'), many(hexadecimal)]).map(e => ({ type: 'ioPad', value: e }))
 tokens['pad'] = sequenceOf([char('$'), many(hexadecimal)]).map(e => ({ type: 'pad', value: e }))
-const ioAddresses = many(choice([whitespace, sublabel, tokens['pad']])).map(e => ({ type: 'ioAddresses', value: e }))
-tokens['device'] = sequenceOf([tokens['ioPad'], whitespace, tokens['label'], deviceReadability, ioAddresses, deviceReadability]).map(e => ({ type: 'device', value: e }))
-tokens['sublabelAddress'] = sequenceOf([char('.'), letters, char('/'), letters]).map(e => ({ type: 'sublabelAddress', value: e }))
-tokens['literalChar'] = sequenceOf([char('\''), anyChar]).map(e => ({ type: 'literalChar', value: e }))
-tokens['macro'] = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')]).map(e => ({ type: 'macro', value: e }))
-tokens['mainMemoryPad'] = sequenceOf([char('|'), exactly(4)(hexadecimal)]).map(e => ({ type: 'mainMemoryPad', value: e }))
-tokens['comment'] = sequenceOf([char('('), everyCharUntil(char(')')), char(')')]).map(e => ({ type: 'comment', value: e }))
-tokens['literalNumber'] = sequenceOf([hexadecimal, hexadecimal]).map(e => ({ type: 'literalNumber', value: e }))
-tokens['push'] = sequenceOf([char('#'), hexadecimal, hexadecimal]).map(e => ({ type: 'push', value: e }))
-tokens['pushShort'] = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal]).map(e => ({ type: 'pushShort', value: e }))
-tokens['ops'] = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace]).map(e => ({ type: 'op', value: e }))
-tokens['word'] = letters.map(e => ({ type: 'word', value: e }))
+tokens['ioAddresses'] = many(choice([whitespace, sublabel, tokens['pad']])).map(e => ({ type: 'ioAddresses', value: e }))
+tokens['device'] = sequenceOf([tokens['ioPad'], whitespace, tokens['label'], deviceReadability, tokens['ioAddresses'], deviceReadability])
+tokens['sublabelAddress'] = sequenceOf([char('.'), letters, char('/'), letters])
+tokens['literalChar'] = sequenceOf([char('\''), anyChar])
+tokens['macro'] = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')])
+tokens['mainMemoryPad'] = sequenceOf([char('|'), exactly(4)(hexadecimal)])
+tokens['comment'] = sequenceOf([char('('), everyCharUntil(char(')')), char(')')])
+tokens['literalNumber'] = sequenceOf([hexadecimal, hexadecimal])
+tokens['push'] = sequenceOf([char('#'), hexadecimal, hexadecimal])
+tokens['pushShort'] = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal])
+tokens['ops'] = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace])
+tokens['word'] = letters
+
+const x = ['word', 'ops','pushShort', 'push','literalNumber', 'comment', 'mainMemoryPad', 'macro', 'literalChar', 'sublabelAddress', 'device']
+x.forEach(token => {
+	console.log(token)
+	tokens[token] = tokens[token].map(e => ({ type: token, value: e}))
+})
 
 const parser = sequenceOf([many(choice([tokens['comment'], tokens['device'], tokens['macro'], tokens['sublabelAddress'], tokens['pad'], tokens['label'], tokens['mainMemoryPad'], tokens['ioPad'], tokens['literalChar'], tokens['literalNumber'], tokens['pushShort'], tokens['push'], tokens['ops'], tokens['word'], whitespace])), endOfInput])
 
@@ -97,7 +103,7 @@ const assemble = (code) => {
         return '80' + e.value[1] + e.value[2]
       case 'pushShort':
         return 'a0' + e.value[1] + e.value[2] + e.value[3] + e.value[4]
-      case 'op':
+      case 'ops':
         return op(e.value)
       case 'word':
         return macros.get(e.value) // TODO throw if word doesnt exist
