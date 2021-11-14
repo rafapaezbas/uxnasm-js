@@ -53,6 +53,13 @@ test('label in page 10 of main', async (assert) => {
   assert.is(assemble(code), rom.toString('hex'))
 })
 
+test('Compudanzas day 3 (hello-keyboard)', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '8.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '8.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
 function requireUncached (module) {
   delete require.cache[require.resolve(module)]
   return require(module)

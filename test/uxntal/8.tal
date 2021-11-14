@@ -1,0 +1,34 @@
+( hello-keyboard.tal )
+
+( devices )
+|00 @System  [ &vector $2 &pad $6   &r $2 &g $2 &b $2 ]
+|20 @Screen  [ &vector $2 &width $2 &height $2 &pad   $2 &x $2 &y $2 &addr $2 &pixel $1 &sprite $1 ]
+|80 @Controller [ &vector $2 &button   $1 &key    $1 ]
+
+( main program )
+|0100 
+      ( set system colors )
+      #2ce9 .System/r DEO2
+      #01c0 .System/g DEO2
+      #2ce5 .System/b DEO2
+
+      ( assign controller vector )
+      ;on-controller .Controller/vector DEO2
+BRK
+
+( run this code whenever a key is pressed or released )
+@on-controller ( -> ) 
+      ( set  x,y coordinates )
+      #0008 .Screen/x DEO2
+      #0008 .Screen/y DEO2
+
+      ( set sprite address )
+      ;square .Screen/addr DEO2
+
+      ( draw sprite in the background )
+      ( using color 1 for the outline )
+      #01 .Screen/sprite DEO
+BRK
+
+( sprite )
+@square ff81 8181 8181 81ff

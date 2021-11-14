@@ -12,13 +12,12 @@ const toHex = (i) => {
 
 const replaceUnresolvedAddresses = (s) => {
   nonResolvedLiteralAbsoluteAddreses.reverse()
-  while (s.indexOf('__') !== -1) {
-    const pad = labels.get(nonResolvedLiteralAbsoluteAddreses.pop())
+  while (s.indexOf('____') !== -1) {
+    const label = nonResolvedLiteralAbsoluteAddreses.pop()
+    const pad = labels.get(label)
     const page = toHex((Math.floor(parseInt(pad, 16) / 256) + 1))
-    const offset = toHex(((parseInt(pad, 16) % 256) + 1))
-    console.log('PAD', pad)
-    console.log('OFFSET', offset)
-    s = s.replace('__', page + offset)
+    const offset = toHex(((parseInt(pad, 16) % 256)))
+    s = s.replace('____', page + offset)
   }
   return s
 }
@@ -36,7 +35,7 @@ const allowedChars = anyOfString('0123456789abcdefghijklmnopqrstuwxyzABCDEFGHIJK
 const opModifier = choice([char('k'), char('r'), char('2')])
 const sublabel = sequenceOf([char('&'), letters]).map(e => ({ type: 'sublabel', value: e }))
 const deviceReadability = many(choice([whitespace, char('['), char(']')]))
-tokens.label = sequenceOf([char('@'), letters]).map(e => ({ type: 'label', value: e }))
+tokens.label = sequenceOf([char('@'), many1(allowedChars)]).map(e => ({ type: 'label', value: e }))
 tokens.ioPad = sequenceOf([char('|'), many(hexadecimal)]).map(e => ({ type: 'ioPad', value: e }))
 tokens.pad = sequenceOf([char('$'), many1(hexadecimal)]).map(e => ({ type: 'pad', value: e }))
 tokens.ioAddresses = many(choice([whitespace, sublabel, tokens.pad])).map(e => ({ type: 'ioAddresses', value: e }))
@@ -67,8 +66,7 @@ f.comment = (e) => {
 }
 
 f.label = (e, i, acc) => {
-  console.log('LENGTH', acc.length)
-  labels.set(e.value[1], toHex(acc.length / 2))
+  labels.set(e.value[1].join(''), toHex(acc.length / 2))
   return undefined
 }
 
@@ -79,7 +77,7 @@ f.sublabelAddress = (e) => {
 f.device = (e) => {
   e.value = e.value.filter(n => n.type !== undefined)
   let pad = e.value[0].value[1].join('')
-  const label = e.value[1].value[1]
+  const label = e.value[1].value[1].join('')
   labels.set(label, pad)
   e.value[2].value.forEach(f => {
     if (f.type === 'sublabel') {
@@ -140,7 +138,7 @@ f.literalAbsoluteAddress = (e, i, acc) => {
     return labels.get(label)
   } else {
     nonResolvedLiteralAbsoluteAddreses.push(label)
-    return 'a0__'
+    return 'a0____'
   }
 }
 
@@ -155,8 +153,9 @@ const assemble = (code) => {
   let ast = context.result[0] // Since result[1] is endOfInput
   ast = ast.filter(e => e.type !== undefined) // Filter non-token
   const firstPass = ast.reduce((acc, e, i) => {
-    if (f[e.type] !== undefined && f[e.type](e, i, acc) !== undefined) {
-      return acc + f[e.type](e, i, acc)
+    const next = f[e.type] !== undefined ? f[e.type](e, i, acc) : undefined
+    if (next) {
+      return acc + next
     } else {
       return acc
     }
