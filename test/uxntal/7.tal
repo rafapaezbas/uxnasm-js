@@ -1,0 +1,8 @@
+@program
+
+|100
+	;label LIT 'h LIT DEO
+
+
+$1000
+@label 68

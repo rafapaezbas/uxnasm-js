@@ -7,18 +7,20 @@ const nonResolvedLiteralAbsoluteAddreses = []
 const toHex = (i) => {
   i = i.toString(16)
   const result = i.length < 2 ? '0' + i : i
-	return result
+  return result
 }
 
 const replaceUnresolvedAddresses = (s) => {
-	nonResolvedLiteralAbsoluteAddreses.reverse()
-	while(s.indexOf("__") !== -1){
-		const pad = labels.get(nonResolvedLiteralAbsoluteAddreses.pop())
-		const page = toHex((Math.floor(parseInt(pad,16) / 255) + 1))
-		const offset = toHex((parseInt(pad,16) % 255))
-		s = s.replace("__",page + offset)
-	}
-	return s
+  nonResolvedLiteralAbsoluteAddreses.reverse()
+  while (s.indexOf('__') !== -1) {
+    const pad = labels.get(nonResolvedLiteralAbsoluteAddreses.pop())
+    const page = toHex((Math.floor(parseInt(pad, 16) / 256) + 1))
+    const offset = toHex(((parseInt(pad, 16) % 256) + 1))
+    console.log('PAD', pad)
+    console.log('OFFSET', offset)
+    s = s.replace('__', page + offset)
+  }
+  return s
 }
 
 const opCodes = ['BRK', 'INC', 'POP', 'DUP', 'NIP', 'SWP', 'OVR', 'ROT', 'EQU', 'NEQ', 'GTH', 'LTH', 'JMP', 'JCN', 'JSR', 'STH', 'LDZ', 'STZ', 'LDR', 'STR', 'LDA', 'STA', 'DEI', 'DEO', 'ADD', 'SUB', 'MUL', 'DIV', 'AND', 'ORA', 'EOR', 'SFT']
@@ -49,14 +51,14 @@ tokens.push = sequenceOf([char('#'), hexadecimal, hexadecimal])
 tokens.pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal])
 tokens.ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace])
 tokens.word = many1(allowedChars)
-tokens.literalAbsoluteAddress = sequenceOf([char(';'),many1(allowedChars)])
+tokens.literalAbsoluteAddress = sequenceOf([char(';'), many1(allowedChars)])
 
 const inCodeTokens = ['word', 'ops', 'pushShort', 'push', 'literalNumber', 'comment', 'mainMemoryPad', 'macro', 'literalChar', 'sublabelAddress', 'device', 'literalAbsoluteAddress']
 inCodeTokens.forEach(token => {
   tokens[token] = tokens[token].map(e => ({ type: token, value: e }))
 })
 
-const parser = sequenceOf([many(choice([tokens.comment, tokens.device, tokens.macro, tokens.sublabelAddress, tokens.pad, tokens.label,tokens.literalAbsoluteAddress, tokens.mainMemoryPad, tokens.ioPad, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
+const parser = sequenceOf([many(choice([tokens.comment, tokens.device, tokens.macro, tokens.sublabelAddress, tokens.pad, tokens.label, tokens.literalAbsoluteAddress, tokens.mainMemoryPad, tokens.ioPad, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
 
 const f = []
 
@@ -65,6 +67,7 @@ f.comment = (e) => {
 }
 
 f.label = (e, i, acc) => {
+  console.log('LENGTH', acc.length)
   labels.set(e.value[1], toHex(acc.length / 2))
   return undefined
 }
@@ -123,27 +126,27 @@ f.ops = (e) => {
   const k = e.value.filter(e => e === 'k')[0] ? 0x80 : 0x00
   const r = e.value.filter(e => e === 'r')[0] ? 0x40 : 0x00
   const s = e.value.filter(e => e === '2')[0] ? 0x20 : 0x00
-  const op =  (parseInt(hexOpCodes.get(e.value[0]), 16) + k + r + s).toString(16)
-  return op.length > 1 ? op : "0" + op
+  const op = (parseInt(hexOpCodes.get(e.value[0]), 16) + k + r + s).toString(16)
+  return op.length > 1 ? op : '0' + op
 }
 
 f.word = (e) => {
   return macros.get(e.value.join('')) // TODO throw if word doesnt exist
 }
 
-f.literalAbsoluteAddress = (e,i,acc) => {
-	const label = e.value[1].join('')
-	if(labels.get(label) !== undefined){
-		return labels.get(label)
-	}else{
-		nonResolvedLiteralAbsoluteAddreses.push(label)
-		return "a0__"
-	}
+f.literalAbsoluteAddress = (e, i, acc) => {
+  const label = e.value[1].join('')
+  if (labels.get(label) !== undefined) {
+    return labels.get(label)
+  } else {
+    nonResolvedLiteralAbsoluteAddreses.push(label)
+    return 'a0__'
+  }
 }
 
-f.pad = (e,i,acc) => {
-	const pad = parseInt(e.value[1].join(''), 16)
-	return "0".repeat(pad * 2)
+f.pad = (e, i, acc) => {
+  const pad = parseInt(e.value[1].join(''), 16)
+  return '0'.repeat(pad * 2)
 }
 
 const assemble = (code) => {
@@ -151,13 +154,13 @@ const assemble = (code) => {
   if (context.isError) throw Error(context.error) // TODO pretty print this
   let ast = context.result[0] // Since result[1] is endOfInput
   ast = ast.filter(e => e.type !== undefined) // Filter non-token
-  const firstPass = ast.reduce((acc,e, i) => {
-    if (f[e.type] !== undefined && f[e.type](e,i,acc) !== undefined) {
+  const firstPass = ast.reduce((acc, e, i) => {
+    if (f[e.type] !== undefined && f[e.type](e, i, acc) !== undefined) {
       return acc + f[e.type](e, i, acc)
     } else {
       return acc
     }
-  },"")
+  }, '')
   return replaceUnresolvedAddresses(firstPass)
 }
 
