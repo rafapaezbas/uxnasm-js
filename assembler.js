@@ -6,13 +6,17 @@ const nonResolvedLiteralAbsoluteAddreses = []
 
 const toHex = (i) => {
   i = i.toString(16)
-  return i.length < 2 ? '0' + i : i
+  const result = i.length < 2 ? '0' + i : i
+	return result
 }
 
 const replaceUnresolvedAddresses = (s) => {
 	nonResolvedLiteralAbsoluteAddreses.reverse()
 	while(s.indexOf("__") !== -1){
-		s = s.replace("__",labels.get(nonResolvedLiteralAbsoluteAddreses.pop()))
+		const pad = labels.get(nonResolvedLiteralAbsoluteAddreses.pop())
+		const page = toHex((Math.floor(parseInt(pad,16) / 255) + 1))
+		const offset = toHex((parseInt(pad,16) % 255))
+		s = s.replace("__",page + offset)
 	}
 	return s
 }
@@ -26,13 +30,13 @@ opCodes.push('LIT')
 const tokens = []
 
 const hexadecimal = anyOfString('0123456789abdcef')
-const allowedChars = anyOfString('abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ-')
+const allowedChars = anyOfString('0123456789abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ-')
 const opModifier = choice([char('k'), char('r'), char('2')])
 const sublabel = sequenceOf([char('&'), letters]).map(e => ({ type: 'sublabel', value: e }))
 const deviceReadability = many(choice([whitespace, char('['), char(']')]))
 tokens.label = sequenceOf([char('@'), letters]).map(e => ({ type: 'label', value: e }))
 tokens.ioPad = sequenceOf([char('|'), many(hexadecimal)]).map(e => ({ type: 'ioPad', value: e }))
-tokens.pad = sequenceOf([char('$'), many(hexadecimal)]).map(e => ({ type: 'pad', value: e }))
+tokens.pad = sequenceOf([char('$'), many1(hexadecimal)]).map(e => ({ type: 'pad', value: e }))
 tokens.ioAddresses = many(choice([whitespace, sublabel, tokens.pad])).map(e => ({ type: 'ioAddresses', value: e }))
 tokens.device = sequenceOf([tokens.ioPad, whitespace, tokens.label, deviceReadability, tokens.ioAddresses, deviceReadability])
 tokens.sublabelAddress = sequenceOf([char('.'), letters, char('/'), letters])
@@ -119,7 +123,8 @@ f.ops = (e) => {
   const k = e.value.filter(e => e === 'k')[0] ? 0x80 : 0x00
   const r = e.value.filter(e => e === 'r')[0] ? 0x40 : 0x00
   const s = e.value.filter(e => e === '2')[0] ? 0x20 : 0x00
-  return (parseInt(hexOpCodes.get(e.value[0]), 16) + k + r + s).toString(16)
+  const op =  (parseInt(hexOpCodes.get(e.value[0]), 16) + k + r + s).toString(16)
+  return op.length > 1 ? op : "0" + op
 }
 
 f.word = (e) => {
@@ -132,12 +137,12 @@ f.literalAbsoluteAddress = (e,i,acc) => {
 		return labels.get(label)
 	}else{
 		nonResolvedLiteralAbsoluteAddreses.push(label)
-		return "a001__"
+		return "a0__"
 	}
 }
 
 f.pad = (e,i,acc) => {
-	const pad = parseInt(e.value[1].join(''), 10)
+	const pad = parseInt(e.value[1].join(''), 16)
 	return "0".repeat(pad * 2)
 }
 
