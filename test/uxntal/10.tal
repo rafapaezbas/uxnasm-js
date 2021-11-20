@@ -1,0 +1,7 @@
+
+|100
+@program
+LIT 'a LIT 18 DEO
+&end
+LIT 'b LIT 18 DEO
+LIT 00 ,&end JCN

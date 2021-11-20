@@ -60,6 +60,20 @@ test('Compudanzas day 3 (hello-keyboard)', async (assert) => {
   assert.is(assemble(code), rom.toString('hex'))
 })
 
+test('relative address non resolved', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '9.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '9.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
+test('relative address resolved', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '10.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '10.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
 function requireUncached (module) {
   delete require.cache[require.resolve(module)]
   return require(module)

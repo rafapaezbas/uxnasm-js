@@ -2,7 +2,9 @@ const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyC
 
 const labels = new Map()
 const macros = new Map()
+const relativeLabels = new Map()
 const nonResolvedLiteralAbsoluteAddreses = []
+const nonResolvedRelativeAddresses = []
 
 const toHex = (i) => {
   i = i.toString(16)
@@ -18,6 +20,19 @@ const replaceUnresolvedAddresses = (s) => {
     const page = toHex((Math.floor(parseInt(pad, 16) / 256) + 1))
     const offset = toHex(((parseInt(pad, 16) % 256)))
     s = s.replace('____', page + offset)
+  }
+  return s
+}
+
+const replaceUnresolvedRelativeAddress = (s) => {
+  nonResolvedRelativeAddresses.reverse()
+  while (s.indexOf('++++') !== -1) {
+    const label = nonResolvedRelativeAddresses.pop()
+    const distance = toHex(((relativeLabels.get(label.label) - label.pos) / 2) + 1)
+    if (parseInt(distance, 16) > 128) {
+      // TODO error label to far away
+    }
+    s = s.replace('++++', '80' + distance)
   }
   return s
 }
@@ -51,13 +66,16 @@ tokens.pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal,
 tokens.ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace])
 tokens.word = many1(allowedChars)
 tokens.literalAbsoluteAddress = sequenceOf([char(';'), many1(allowedChars)])
+tokens.literalRelativeAddress = sequenceOf([char(','), many1(allowedChars)])
+tokens.relativeAddress = sequenceOf([char(','), char('&'), many1(allowedChars)])
+tokens.relativeLabel = sequenceOf([char('&'), many1(allowedChars)])
 
-const inCodeTokens = ['word', 'ops', 'pushShort', 'push', 'literalNumber', 'comment', 'mainMemoryPad', 'macro', 'literalChar', 'sublabelAddress', 'device', 'literalAbsoluteAddress']
+const inCodeTokens = ['word', 'ops', 'pushShort', 'push', 'literalNumber', 'comment', 'mainMemoryPad', 'macro', 'literalChar', 'sublabelAddress', 'device', 'literalAbsoluteAddress', 'relativeLabel', 'relativeAddress']
 inCodeTokens.forEach(token => {
   tokens[token] = tokens[token].map(e => ({ type: token, value: e }))
 })
 
-const parser = sequenceOf([many(choice([tokens.comment, tokens.device, tokens.macro, tokens.sublabelAddress, tokens.pad, tokens.label, tokens.literalAbsoluteAddress, tokens.mainMemoryPad, tokens.ioPad, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
+const parser = sequenceOf([many(choice([tokens.comment, tokens.device, tokens.macro, tokens.sublabelAddress, tokens.pad, tokens.label, tokens.literalAbsoluteAddress, tokens.mainMemoryPad, tokens.relativeLabel, tokens.relativeAddress, tokens.ioPad, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
 
 const f = []
 
@@ -147,6 +165,23 @@ f.pad = (e, i, acc) => {
   return '0'.repeat(pad * 2)
 }
 
+f.relativeLabel = (e, i, acc) => {
+  const label = e.value[1].join('')
+  relativeLabels.set(label, acc.length / 2)
+}
+
+f.relativeAddress = (e, i, acc) => {
+  const label = relativeLabels.get(e.value[2].join(''))
+  if (label) {
+    const distance = 255 - (label * 2) + 1
+    // if (distance > 128) TODO throw error
+    return '80' + toHex(distance)
+  } else {
+    nonResolvedRelativeAddresses.push({ label: e.value[2].join(''), pos: acc.length / 2 })
+    return '++++'
+  }
+}
+
 const assemble = (code) => {
   const context = parser.run(code)
   if (context.isError) throw Error(context.error) // TODO pretty print this
@@ -160,7 +195,7 @@ const assemble = (code) => {
       return acc
     }
   }, '')
-  return replaceUnresolvedAddresses(firstPass)
+  return replaceUnresolvedRelativeAddress(replaceUnresolvedAddresses(firstPass))
 }
 
 module.exports = assemble
