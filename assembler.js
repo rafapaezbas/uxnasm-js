@@ -1,5 +1,6 @@
 const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyChar, possibly, letters, many, many1, exactly, everyCharUntil } = require('arcsecond')
 
+let currentLabel = "default"
 const labels = new Map()
 const macros = new Map()
 const relativeLabels = new Map()
@@ -84,6 +85,7 @@ f.comment = (e) => {
 }
 
 f.label = (e, i, acc) => {
+  currentLabel = e.value[1].join('')
   labels.set(e.value[1].join(''), toHex(acc.length / 2))
   return undefined
 }
@@ -167,17 +169,17 @@ f.pad = (e, i, acc) => {
 
 f.relativeLabel = (e, i, acc) => {
   const label = e.value[1].join('')
-  relativeLabels.set(label, acc.length / 2)
+  relativeLabels.set(currentLabel + '/' + label, acc.length / 2)
 }
 
 f.relativeAddress = (e, i, acc) => {
-  const label = relativeLabels.get(e.value[2].join(''))
+  const label = relativeLabels.get(currentLabel + '/' +  e.value[2].join(''))
   if (label) {
     const distance = 255 - (label * 2) + 1
     // if (distance > 128) TODO throw error
     return '80' + toHex(distance)
   } else {
-    nonResolvedRelativeAddresses.push({ label: e.value[2].join(''), pos: acc.length / 2 })
+    nonResolvedRelativeAddresses.push({ label: currentLabel + '/' + e.value[2].join(''), pos: acc.length / 2 })
     return '++++'
   }
 }

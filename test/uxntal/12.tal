@@ -1,0 +1,28 @@
+( hello-line.tal )
+
+( devices )
+|00 @System  [ &vector $2 &pad $6  &r $2 &g $2 &b $2 ]
+|20 @Screen  [ &vector $2 &width $2 &height $2 &pad  $2 &x $2 &y $2 &addr $2 &pixel $1 &sprite $1 ]
+
+( init )
+|0100
+      ( set system colors )
+      #2ce9 .System/r DEO2
+      #01c0 .System/g DEO2
+      #2ce5 .System/b DEO2
+
+      ( set initial x,y coordinates )
+      #0008 .Screen/x DEO2
+      #0008 .Screen/y DEO2
+
+      ( set screen vector )
+      ;on-frame .Screen/vector DEO2
+BRK
+
+@on-frame ( -> )
+      ( draw a pixel in the bg with color 1 )
+      #01 .Screen/pixel DEO
+
+      ( increment Screen/x )
+      .Screen/x DEI2 INC2 .Screen/x DEO2
+BRK
