@@ -74,6 +74,13 @@ test('relative address resolved', async (assert) => {
   assert.is(assemble(code), rom.toString('hex'))
 })
 
+test('compudanzas day 3 "draw with arrows"', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '11.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '11.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
 function requireUncached (module) {
   delete require.cache[require.resolve(module)]
   return require(module)

@@ -28,7 +28,7 @@ const replaceUnresolvedRelativeAddress = (s) => {
   nonResolvedRelativeAddresses.reverse()
   while (s.indexOf('++++') !== -1) {
     const label = nonResolvedRelativeAddresses.pop()
-    const distance = toHex(((relativeLabels.get(label.label) - label.pos) / 2) + 1)
+    const distance = toHex((relativeLabels.get(label.label) - (label.pos + 3)))
     if (parseInt(distance, 16) > 128) {
       // TODO error label to far away
     }
