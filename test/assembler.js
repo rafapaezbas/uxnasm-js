@@ -2,7 +2,7 @@ const { test, solo } = require('brittle')
 const fs = require('fs').promises
 const path = require('path')
 
-// solo()
+solo()
 
 test('Macros, devices and basics', async (assert) => {
   const assemble = requireUncached('../assembler.js')
@@ -116,14 +116,12 @@ test('return mode', async (assert) => {
   assert.is(assemble(code), rom.toString('hex'))
 })
 
-/*
-test('compudanzas pong', async (assert) => {
+solo('compudanzas pong', async (assert) => {
   const assemble = requireUncached('../assembler.js')
   const rom = await fs.readFile(path.join(__dirname, 'roms', '17.rom'))
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '17.tal'))).toString()
   assert.is(assemble(code), rom.toString('hex'))
 })
-*/
 
 function requireUncached (module) {
   delete require.cache[require.resolve(module)]

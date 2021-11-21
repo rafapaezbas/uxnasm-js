@@ -31,27 +31,27 @@ const opModifier = choice([char('k'), char('r'), char('2')])
 const word = many1(allowedChars)
 
 const tokens = []
-tokens.sublabel = sequenceOf([char('&'), word])
+tokens.comment = sequenceOf([char('('), everyCharUntil(char(')')), char(')')])
+tokens.macro = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')])
 tokens.label = sequenceOf([char('@'), word])
+tokens.sublabel = sequenceOf([char('&'), word])
 tokens.pad = sequenceOf([char('|'), many(hexadecimal)])
 tokens.relativePad = sequenceOf([char('$'), many1(hexadecimal)])
-tokens.sublabelAddress = sequenceOf([char('.'), word, possibly(sequenceOf([char('/'), word]))])
 tokens.literalChar = sequenceOf([char('\''), anyChar])
-tokens.macro = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')])
-tokens.comment = sequenceOf([char('('), everyCharUntil(char(')')), char(')')])
 tokens.literalNumber = sequenceOf([hexadecimal, hexadecimal])
 tokens.push = sequenceOf([char('#'), hexadecimal, hexadecimal])
 tokens.pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal])
 tokens.ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace])
-tokens.word = word
-tokens.absoluteAddress = sequenceOf([char(';'), word])
+tokens.zeroPageAddress = sequenceOf([char('.'), word, possibly(sequenceOf([char('/'), word]))])
+tokens.absoluteAddress = sequenceOf([char(';'), word, possibly(sequenceOf([char('/'), word]))])
 tokens.relativeAddress = sequenceOf([char(','), char('&'), word])
+tokens.word = word
 
 Object.keys(tokens).forEach(token => {
   tokens[token] = tokens[token].map(e => ({ type: token, value: e }))
 })
 
-const parser = sequenceOf([many(choice([tokens.comment, tokens.macro, tokens.sublabel, tokens.sublabelAddress, tokens.pad, tokens.label, tokens.absoluteAddress, tokens.relativePad, tokens.relativeAddress, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
+const parser = sequenceOf([many(choice([tokens.comment, tokens.macro, tokens.sublabel, tokens.zeroPageAddress, tokens.pad, tokens.label, tokens.absoluteAddress, tokens.relativePad, tokens.relativeAddress, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
 
 const f = []
 
@@ -65,7 +65,7 @@ f.label = (e, i, acc) => {
   return undefined
 }
 
-f.sublabelAddress = (e) => {
+f.zeroPageAddress = (e) => {
   const label = e.value[1].join('')
   const sublabel = e.value[2] ? '/' + e.value[2][1].join('') : ''
   return '80' + labels.get(label + sublabel)
@@ -104,16 +104,6 @@ f.word = (e) => {
   return macros.get(e.value.join('')) // TODO throw if word doesnt exist
 }
 
-f.absoluteAddress = (e, i, acc) => {
-  const label = e.value[1].join('')
-  if (labels.get(label) !== undefined) {
-    return labels.get(label)
-  } else {
-    nonResolvedLiteralAbsoluteAddreses.push(label)
-    return 'a0____'
-  }
-}
-
 f.pad = (e, i, acc) => {
   const pad = parseInt(e.value[1].join(''), 16)
   currentPad = pad
@@ -135,12 +125,29 @@ f.relativePad = (e, i, acc) => {
   }
 }
 
+f.absoluteAddress = (e, i, acc) => {
+  const label = e.value[1].join('')
+  const sublabel = e.value[2] ? '/' + e.value[2][1].join('') : ''
+  if (labels.get(label + sublabel) !== undefined) {
+    const pad = labels.get(label + sublabel)
+    const page = toHex((Math.floor(parseInt(pad, 16) / 256) + 1))
+    const offset = toHex(((parseInt(pad, 16) % 256)))
+    //return 'a0' + labels.get(label + sublabel)
+    return 'a0' + page + offset
+  } else {
+    nonResolvedLiteralAbsoluteAddreses.push(label + sublabel)
+    return 'a0____'
+  }
+}
+
+
 f.relativeAddress = (e, i, acc) => {
   const label = labels.get(currentLabel + '/' + e.value[2].join(''))
   if (label) {
-    const distance = 255 - (label * 2) + 1
+    const distance = (acc.length - (label * 2))
     // if (distance > 128) TODO throw error
-    return '80' + toHex(distance)
+    if(distance < 0) console.log("DISTANCE LESS THAN 0", e, label * 2, acc.length)
+    return '80' + toHex(260 - distance)
   } else {
     nonResolvedRelativeAddresses.push({ label: currentLabel + '/' + e.value[2].join(''), pos: acc.length / 2 })
     return '++++'
@@ -165,6 +172,7 @@ const assemble = (code) => {
   ast = ast.filter(e => e.type !== undefined) // Filter non-token
   const firstPass = ast.reduce((acc, e, i) => {
     const next = f[e.type] !== undefined ? f[e.type](e, i, acc) : undefined
+	  if(next != undefined && next.indexOf("-") != -1) console.log("WHAAAAT??", e)
     if (next) {
       return acc + next
     } else {
@@ -175,12 +183,15 @@ const assemble = (code) => {
 }
 
 const replaceUnresolvedAddresses = (s) => {
+	console.log("SSSS", s)
   nonResolvedLiteralAbsoluteAddreses.reverse()
   while (s.indexOf('____') !== -1) {
     const label = nonResolvedLiteralAbsoluteAddreses.pop()
     const pad = labels.get(label)
-    const page = toHex((Math.floor(parseInt(pad, 16) / 256) + 1))
-    const offset = toHex(((parseInt(pad, 16) % 256)))
+	  console.log("PAD", typeof pad)
+    const i = typeof pad === "string" ? parseInt(pad, 16) : pad
+    const page = toHex((Math.floor(i / 256) + 1))
+    const offset = toHex(((i % 256)))
     s = s.replace('____', page + offset)
   }
   return s
