@@ -1,0 +1,51 @@
+( hello-animated-sprite.tal )
+
+( devices )
+|00 @System  [ &vector $2 &pad $6  &r $2 &g $2 &b $2 ]
+|20 @Screen  [ &vector $2 &width $2 &height $2 &pad  $2 &x $2 &y $2 &addr $2 &pixel $1 &sprite $1 ]
+
+( macros/constants )
+%HALF2 { #01 SFT2 } ( shift one bit to the right ) ( short -- short/2 )
+%color-clear { #40 } ( clear 1bpp sprite from fg )
+%color-2 { #4a } ( draw 1bpp sprite with color 2 and transparency )
+
+( zero page )
+|0000
+@sprite [ &pos-x $2 &pos-y $2 ]
+
+( init )
+|0100
+      ( set system colors )
+      #2ce9 .System/r DEO2
+      #01c0 .System/g DEO2
+      #2ce5 .System/b DEO2
+
+      ( set screen/y to half of screen minus 4 )
+      .Screen/height DEI2 HALF2 #0004 SUB2 .Screen/y DEO2
+
+      ( set sprite address )
+      ;square .Screen/addr DEO2
+
+      ( set screen vector )
+      ;on-frame .Screen/vector DEO2
+BRK
+
+@on-frame ( -> )
+      ( 1: clear sprite )
+      ( clear sprite from the fg )
+      color-clear .Screen/sprite DEO
+
+      ( 2: change position )
+      ( increment sprite/pos-x )
+      .sprite/pos-x LDZ2 INC2 .sprite/pos-x STZ2 
+
+      ( 3 : draw sprite )
+      ( load x coordinate from zero page and send to screen )
+      .sprite/pos-x LDZ2 .Screen/x DEO2
+
+      ( draw sprite in fg with color 2 and transparency )
+      color-2 .Screen/sprite DEO
+BRK
+
+( sprite data )
+@square ff81 8181 8181 81ff

@@ -2,9 +2,9 @@ const { test, solo } = require('brittle')
 const fs = require('fs').promises
 const path = require('path')
 
-solo()
+// solo()
 
-solo('Macros, devices and basics', async (assert) => {
+test('Macros, devices and basics', async (assert) => {
   const assemble = requireUncached('../assembler.js')
   const rom = await fs.readFile(path.join(__dirname, 'roms', '1.rom'))
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '1.tal'))).toString()
@@ -87,6 +87,43 @@ test('compudanzas day 4 "hello line"', async (assert) => {
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '12.tal'))).toString()
   assert.is(assemble(code), rom.toString('hex'))
 })
+
+test('zero page variables', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '13.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '13.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
+test('compudanzas day 4 hello-animated-sprite', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '14.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '14.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
+test('moving sprite (compudanzas day 4)', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '15.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '15.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
+test('return mode', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '16.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '16.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
+/*
+test('compudanzas pong', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '17.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '17.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+*/
 
 function requireUncached (module) {
   delete require.cache[require.resolve(module)]

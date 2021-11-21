@@ -1,0 +1,56 @@
+( hello-pointer.tal )
+
+( devices )
+|00 @System  [ &vector $2 &pad $6  &r $2 &g $2 &b $2 ]
+|20 @Screen  [ &vector $2 &width $2 &height $2 &pad  $2 &x $2 &y $2 &addr $2 &pixel $1 &sprite $1 ]
+|90 @Mouse [ &vector $2 &x $2 &y $2 &state $1 &wheel $1 ]
+
+( macros )
+%RTN { JMP2r }
+
+( zero page )
+|0000
+@pointer [ &x $2 &y $2 ]
+
+( init )
+|0100
+    ( set system colors )
+    #2ce9 .System/r DEO2
+    #01c0 .System/g DEO2
+    #2ce5 .System/b DEO2
+
+    ( set mouse vector )
+    ;on-mouse .Mouse/vector DEO2
+
+    ( set sprite address )
+    ;pointer_icn .Screen/addr DEO2
+
+BRK
+
+@on-mouse ( -> )
+   ;draw-pointer JSR2 ( or ,draw-pointer JSR )
+
+   ( something else )
+BRK
+
+@draw-pointer ( -- )
+    ( send pointer position to screen )
+    .pointer/x LDZ2 .Screen/x DEO2
+    .pointer/y LDZ2 .Screen/y DEO2
+
+    ( clear sprite from foreground )
+    #40 .Screen/sprite DEO 
+
+    ( update pointer position )
+    .Mouse/x DEI2 .pointer/x STZ2
+    .Mouse/y DEI2 .pointer/y STZ2
+
+    ( send pointer position to screen )
+    .pointer/x LDZ2 .Screen/x DEO2
+    .pointer/y LDZ2 .Screen/y DEO2
+
+    ( draw sprite with color 2 in foreground )
+    #4a .Screen/sprite DEO 
+RTN
+
+@pointer_icn [ 80c0 e0f0 f8e0 1000 ]

@@ -1,4 +1,4 @@
-const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyChar, possibly, letters, many, many1, everyCharUntil } = require('arcsecond')
+const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyChar, possibly, many, many1, everyCharUntil } = require('arcsecond')
 
 let currentLabel = 'default'
 let currentPad = 256 // By default, write in main memory
@@ -26,7 +26,7 @@ opCodes.forEach((op, i) => {
 })
 
 const hexadecimal = anyOfString('0123456789abdcef')
-const allowedChars = anyOfString('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-')
+const allowedChars = anyOfString('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_')
 const opModifier = choice([char('k'), char('r'), char('2')])
 const word = many1(allowedChars)
 
@@ -35,7 +35,7 @@ tokens.sublabel = sequenceOf([char('&'), word])
 tokens.label = sequenceOf([char('@'), word])
 tokens.pad = sequenceOf([char('|'), many(hexadecimal)])
 tokens.relativePad = sequenceOf([char('$'), many1(hexadecimal)])
-tokens.sublabelAddress = sequenceOf([char('.'), letters, char('/'), letters])
+tokens.sublabelAddress = sequenceOf([char('.'), word, possibly(sequenceOf([char('/'), word]))])
 tokens.literalChar = sequenceOf([char('\''), anyChar])
 tokens.macro = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')])
 tokens.comment = sequenceOf([char('('), everyCharUntil(char(')')), char(')')])
@@ -67,7 +67,9 @@ f.label = (e, i, acc) => {
 }
 
 f.sublabelAddress = (e) => {
-  return '80' + labels.get(e.value[1] + '/' + e.value[3])
+  const label = e.value[1].join('')
+  const sublabel = e.value[2] ? '/' + e.value[2][1].join('') : ''
+  return '80' + labels.get(label + sublabel)
 }
 
 f.macro = (e) => {

@@ -1,0 +1,68 @@
+( hello-animation.tal )
+
+( devices )
+|00 @System  [ &vector $2 &pad $6  &r $2 &g $2 &b $2 ]
+|20 @Screen  [ &vector $2 &width $2 &height $2 &pad  $2 &x $2 &y $2 &addr $2 &pixel $1 &sprite $1 ]
+
+( macros/constants )
+%HALF2 { #01 SFT2 } ( shift one bit to the right ) ( short -- short/2 )
+%8MOD { #07 AND } ( byte -- byte%8 )
+%TO-SHORT { #00 SWP } ( byte -- short )
+
+%color-clear { #40 } ( clear 1bpp sprite from fg )
+%color-2-3 { #4e } ( draw 1bpp sprite with color 2 and 3 )
+
+( zero page )
+|0000
+@framecount $1
+
+( init )
+|0100
+      ( set system colors )
+      #2ce9 .System/r DEO2
+      #01c0 .System/g DEO2
+      #2ce5 .System/b DEO2
+
+      ( set screen/x and y to half of screen minus 4 )
+      .Screen/width DEI2 HALF2 #0004 SUB2 .Screen/x DEO2
+      .Screen/height DEI2 HALF2 #0004 SUB2 .Screen/y DEO2
+
+      ( set sprite address )
+      ;animation .Screen/addr DEO2
+
+      ( set screen vector )
+      ;on-frame .Screen/vector DEO2
+
+BRK
+
+@on-frame ( -> )
+      ( 0: increment framecount )
+      .framecount LDZ INC .framecount STZ
+
+      ( 1: clear sprite )
+      ( clear sprite from the fg )
+      color-clear .Screen/sprite DEO
+
+      ( 2: update sprite address )
+      .framecount LDZ ( load framecount )
+      8MOD ( apply modulo 8 to obtain sequence between 0 and 7 )
+      #08 MUL ( multiply times 8 to get the offset )
+      TO-SHORT ( convert to short )
+      ;animation ( get animation address )
+      ADD2 ( add offset to address )
+      .Screen/addr DEO2 ( set computed address )
+
+      ( draw sprite in fg with color 2 and 3 )
+      color-2-3 .Screen/sprite DEO
+BRK
+
+( sprite data )
+@animation
+  &frame0 00 00 00 00 00 00 01 03
+  &frame1 00 00 00 00 01 03 06 0c
+  &frame2 00 00 01 03 06 0c 18 30
+  &frame3 01 03 06 0c 18 30 60 c0
+  &frame4 03 06 0c 18 30 60 c0 80
+  &frame5 0c 18 30 60 c0 80 00 00
+  &frame6 30 60 c0 80 00 00 00 00
+  &frame7 c0 80 00 00 00 00 00 00
