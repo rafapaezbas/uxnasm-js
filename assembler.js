@@ -1,11 +1,10 @@
 const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyChar, possibly, letters, many, many1, everyCharUntil } = require('arcsecond')
 
 let currentLabel = 'default'
-let currentPad = 0
+let currentPad = 256 // By default, write in main memory
 
 const labels = new Map()
 const macros = new Map()
-const relativeLabels = new Map()
 const nonResolvedLiteralAbsoluteAddreses = []
 const nonResolvedRelativeAddresses = []
 
@@ -48,13 +47,12 @@ tokens.word = word
 tokens.literalAbsoluteAddress = sequenceOf([char(';'), word])
 tokens.literalRelativeAddress = sequenceOf([char(','), word])
 tokens.relativeAddress = sequenceOf([char(','), char('&'), word])
-tokens.relativeLabel = sequenceOf([char('&'), word])
 
 Object.keys(tokens).forEach(token => {
   tokens[token] = tokens[token].map(e => ({ type: token, value: e }))
 })
 
-const parser = sequenceOf([many(choice([tokens.comment, tokens.macro, tokens.sublabel, tokens.sublabelAddress, tokens.pad, tokens.label, tokens.literalAbsoluteAddress, tokens.relativePad, tokens.relativeLabel, tokens.relativeAddress, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
+const parser = sequenceOf([many(choice([tokens.comment, tokens.macro, tokens.sublabel, tokens.sublabelAddress, tokens.pad, tokens.label, tokens.literalAbsoluteAddress, tokens.relativePad, tokens.relativeAddress, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
 
 const f = []
 
@@ -75,10 +73,6 @@ f.sublabelAddress = (e) => {
 f.macro = (e) => {
   macros.set(e.value[1], assemble(e.value[4]))
   return undefined
-}
-
-f.mainMemoryPad = (e) => {
-  return undefined // TODO
 }
 
 f.literalChar = (e) => {
@@ -120,28 +114,28 @@ f.literalAbsoluteAddress = (e, i, acc) => {
 }
 
 f.pad = (e, i, acc) => {
-  console.log('E', e)
   const pad = parseInt(e.value[1].join(''), 16)
   currentPad = pad
-  if (pad > 256) {
-    return '0'.repeat(pad * 2)
+  if (pad >= 256) {
+    return '0'.repeat((pad - 256) * 2)
   } else {
     return ''
   }
 }
 
 f.relativePad = (e, i, acc) => {
-  currentPad += parseInt(e.value[1].join(''), 16)
-  console.log('RELATIVE PAD', e)
-}
-
-f.relativeLabel = (e, i, acc) => {
-  const label = e.value[1].join('')
-  relativeLabels.set(currentLabel + '/' + label, acc.length / 2)
+  const pad = parseInt(e.value[1].join(''), 16)
+  if (currentPad >= 256) {
+    currentPad += pad
+    return '0'.repeat(pad * 2)
+  } else {
+    currentPad += pad
+    return ''
+  }
 }
 
 f.relativeAddress = (e, i, acc) => {
-  const label = relativeLabels.get(currentLabel + '/' + e.value[2].join(''))
+  const label = labels.get(currentLabel + '/' + e.value[2].join(''))
   if (label) {
     const distance = 255 - (label * 2) + 1
     // if (distance > 128) TODO throw error
@@ -153,7 +147,12 @@ f.relativeAddress = (e, i, acc) => {
 }
 
 f.sublabel = (e, i, acc) => {
-  labels.set(currentLabel + '/' + e.value[1].join(''), toHex(currentPad))
+  const label = e.value[1].join('')
+  if (currentPad < 256) {
+    labels.set(currentLabel + '/' + label, toHex(currentPad))
+  } else {
+    labels.set(currentLabel + '/' + label, acc.length / 2)
+  }
   return ''
 }
 
@@ -171,7 +170,6 @@ const assemble = (code) => {
       return acc
     }
   }, '')
-  console.log('LABELS', labels)
   return replaceUnresolvedRelativeAddress(replaceUnresolvedAddresses(firstPass))
 }
 
@@ -191,7 +189,7 @@ const replaceUnresolvedRelativeAddress = (s) => {
   nonResolvedRelativeAddresses.reverse()
   while (s.indexOf('++++') !== -1) {
     const label = nonResolvedRelativeAddresses.pop()
-    const distance = toHex((relativeLabels.get(label.label) - (label.pos + 3)))
+    const distance = toHex((labels.get(label.label) - (label.pos + 3)))
     if (parseInt(distance, 16) > 128) {
       // TODO error label to far away
     }
