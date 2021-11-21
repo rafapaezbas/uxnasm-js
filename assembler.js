@@ -44,15 +44,14 @@ tokens.push = sequenceOf([char('#'), hexadecimal, hexadecimal])
 tokens.pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal])
 tokens.ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace])
 tokens.word = word
-tokens.literalAbsoluteAddress = sequenceOf([char(';'), word])
-tokens.literalRelativeAddress = sequenceOf([char(','), word])
+tokens.absoluteAddress = sequenceOf([char(';'), word])
 tokens.relativeAddress = sequenceOf([char(','), char('&'), word])
 
 Object.keys(tokens).forEach(token => {
   tokens[token] = tokens[token].map(e => ({ type: token, value: e }))
 })
 
-const parser = sequenceOf([many(choice([tokens.comment, tokens.macro, tokens.sublabel, tokens.sublabelAddress, tokens.pad, tokens.label, tokens.literalAbsoluteAddress, tokens.relativePad, tokens.relativeAddress, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
+const parser = sequenceOf([many(choice([tokens.comment, tokens.macro, tokens.sublabel, tokens.sublabelAddress, tokens.pad, tokens.label, tokens.absoluteAddress, tokens.relativePad, tokens.relativeAddress, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
 
 const f = []
 
@@ -105,7 +104,7 @@ f.word = (e) => {
   return macros.get(e.value.join('')) // TODO throw if word doesnt exist
 }
 
-f.literalAbsoluteAddress = (e, i, acc) => {
+f.absoluteAddress = (e, i, acc) => {
   const label = e.value[1].join('')
   if (labels.get(label) !== undefined) {
     return labels.get(label)
