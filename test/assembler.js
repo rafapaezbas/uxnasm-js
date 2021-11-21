@@ -2,9 +2,9 @@ const { test, solo } = require('brittle')
 const fs = require('fs').promises
 const path = require('path')
 
-// solo()
+solo()
 
-test('Macros, devices and basics', async (assert) => {
+solo('Macros, devices and basics', async (assert) => {
   const assemble = requireUncached('../assembler.js')
   const rom = await fs.readFile(path.join(__dirname, 'roms', '1.rom'))
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '1.tal'))).toString()
