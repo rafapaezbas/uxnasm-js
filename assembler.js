@@ -132,7 +132,6 @@ f.absoluteAddress = (e, i, acc) => {
     const pad = labels.get(label + sublabel)
     const page = toHex((Math.floor(parseInt(pad, 16) / 256) + 1))
     const offset = toHex(((parseInt(pad, 16) % 256)))
-    //return 'a0' + labels.get(label + sublabel)
     return 'a0' + page + offset
   } else {
     nonResolvedLiteralAbsoluteAddreses.push(label + sublabel)
@@ -140,14 +139,12 @@ f.absoluteAddress = (e, i, acc) => {
   }
 }
 
-
 f.relativeAddress = (e, i, acc) => {
   const label = labels.get(currentLabel + '/' + e.value[2].join(''))
   if (label) {
-    const distance = (acc.length - (label * 2))
-    // if (distance > 128) TODO throw error
-    if(distance < 0) console.log("DISTANCE LESS THAN 0", e, label * 2, acc.length)
-    return '80' + toHex(260 - distance)
+    const distance = label - (acc.length / 2) - 3
+    // if (distance > 126) TODO throw error
+    return '80' + toHex(256 + (distance))
   } else {
     nonResolvedRelativeAddresses.push({ label: currentLabel + '/' + e.value[2].join(''), pos: acc.length / 2 })
     return '++++'
@@ -172,7 +169,6 @@ const assemble = (code) => {
   ast = ast.filter(e => e.type !== undefined) // Filter non-token
   const firstPass = ast.reduce((acc, e, i) => {
     const next = f[e.type] !== undefined ? f[e.type](e, i, acc) : undefined
-	  if(next != undefined && next.indexOf("-") != -1) console.log("WHAAAAT??", e)
     if (next) {
       return acc + next
     } else {
@@ -183,13 +179,11 @@ const assemble = (code) => {
 }
 
 const replaceUnresolvedAddresses = (s) => {
-	console.log("SSSS", s)
   nonResolvedLiteralAbsoluteAddreses.reverse()
   while (s.indexOf('____') !== -1) {
     const label = nonResolvedLiteralAbsoluteAddreses.pop()
     const pad = labels.get(label)
-	  console.log("PAD", typeof pad)
-    const i = typeof pad === "string" ? parseInt(pad, 16) : pad
+    const i = typeof pad === 'string' ? parseInt(pad, 16) : pad
     const page = toHex((Math.floor(i / 256) + 1))
     const offset = toHex(((i % 256)))
     s = s.replace('____', page + offset)
