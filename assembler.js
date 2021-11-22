@@ -33,25 +33,26 @@ const word = many1(allowedChars)
 const tokens = []
 tokens.comment = sequenceOf([char('('), everyCharUntil(char(')')), char(')')])
 tokens.macro = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')])
-tokens.label = sequenceOf([char('@'), word])
-tokens.sublabel = sequenceOf([char('&'), word])
-tokens.pad = sequenceOf([char('|'), many(hexadecimal)])
-tokens.relativePad = sequenceOf([char('$'), many1(hexadecimal)])
-tokens.literalChar = sequenceOf([char('\''), anyChar])
-tokens.literalNumber = sequenceOf([hexadecimal, hexadecimal])
-tokens.push = sequenceOf([char('#'), hexadecimal, hexadecimal])
-tokens.pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal])
-tokens.ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace])
 tokens.zeroPageAddress = sequenceOf([char('.'), word, possibly(sequenceOf([char('/'), word]))])
 tokens.absoluteAddress = sequenceOf([char(';'), word, possibly(sequenceOf([char('/'), word]))])
 tokens.relativeAddress = sequenceOf([char(','), char('&'), word])
+tokens.pad = sequenceOf([char('|'), many(hexadecimal)])
+tokens.relativePad = sequenceOf([char('$'), many1(hexadecimal)])
+tokens.label = sequenceOf([char('@'), word])
+tokens.sublabel = sequenceOf([char('&'), word])
+tokens.literalChar = sequenceOf([char('\''), anyChar])
+tokens.literalNumber = sequenceOf([hexadecimal, hexadecimal])
+tokens.pushShort = sequenceOf([char('#'), hexadecimal, hexadecimal, hexadecimal, hexadecimal])
+tokens.push = sequenceOf([char('#'), hexadecimal, hexadecimal])
+tokens.ops = sequenceOf([choice(opCodes.map(e => str(e))), possibly(opModifier), possibly(opModifier), possibly(opModifier), whitespace])
 tokens.word = word
+tokens.whitespace = whitespace
 
 Object.keys(tokens).forEach(token => {
   tokens[token] = tokens[token].map(e => ({ type: token, value: e }))
 })
 
-const parser = sequenceOf([many(choice([tokens.comment, tokens.macro, tokens.sublabel, tokens.zeroPageAddress, tokens.pad, tokens.label, tokens.absoluteAddress, tokens.relativePad, tokens.relativeAddress, tokens.literalChar, tokens.literalNumber, tokens.pushShort, tokens.push, tokens.ops, tokens.word, whitespace])), endOfInput])
+const parser = sequenceOf([many(choice(Object.keys(tokens).map(e => tokens[e]))), endOfInput])
 
 const f = []
 
@@ -106,7 +107,7 @@ f.pad = (e, i, acc) => {
   currentPad = pad
   if (pad >= 256) {
     return '0'.repeat((pad - 256) * 2)
-  } 
+  }
 }
 
 f.relativePad = (e, i, acc) => {
