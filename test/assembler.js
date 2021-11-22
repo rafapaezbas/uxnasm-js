@@ -123,6 +123,13 @@ test('compudanzas pong', async (assert) => {
   assert.is(assemble(code), rom.toString('hex'))
 })
 
+test('storyteller', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '18.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '18.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
 function requireUncached (module) {
   delete require.cache[require.resolve(module)]
   return require(module)
