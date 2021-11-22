@@ -56,13 +56,11 @@ const parser = sequenceOf([many(choice([tokens.comment, tokens.macro, tokens.sub
 const f = []
 
 f.comment = (e) => {
-  return undefined
 }
 
 f.label = (e, i, acc) => {
   currentLabel = e.value[1].join('')
   labels.set(e.value[1].join(''), toHex(acc.length / 2))
-  return undefined
 }
 
 f.zeroPageAddress = (e) => {
@@ -73,7 +71,6 @@ f.zeroPageAddress = (e) => {
 
 f.macro = (e) => {
   macros.set(e.value[1], assemble(e.value[4]))
-  return undefined
 }
 
 f.literalChar = (e) => {
@@ -109,9 +106,7 @@ f.pad = (e, i, acc) => {
   currentPad = pad
   if (pad >= 256) {
     return '0'.repeat((pad - 256) * 2)
-  } else {
-    return ''
-  }
+  } 
 }
 
 f.relativePad = (e, i, acc) => {
@@ -121,7 +116,6 @@ f.relativePad = (e, i, acc) => {
     return '0'.repeat(pad * 2)
   } else {
     currentPad += pad
-    return ''
   }
 }
 
@@ -158,7 +152,6 @@ f.sublabel = (e, i, acc) => {
   } else {
     labels.set(currentLabel + '/' + label, acc.length / 2)
   }
-  return ''
 }
 
 const assemble = (code) => {
