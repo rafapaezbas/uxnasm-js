@@ -2,7 +2,7 @@ const { test, solo } = require('brittle')
 const fs = require('fs').promises
 const path = require('path')
 
-// solo()
+//solo()
 
 test('Macros, devices and basics', async (assert) => {
   const assemble = requireUncached('../assembler.js')
@@ -127,6 +127,22 @@ test('storyteller', async (assert) => {
   const assemble = requireUncached('../assembler.js')
   const rom = await fs.readFile(path.join(__dirname, 'roms', '18.rom'))
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '18.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
+/*
+test('calc', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '19.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '19.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+*/
+
+test('string', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '20.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '20.tal'))).toString()
   assert.is(assemble(code), rom.toString('hex'))
 })
 
