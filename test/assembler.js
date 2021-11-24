@@ -1,8 +1,8 @@
-const { test, solo } = require('brittle')
+const { test } = require('brittle')
 const fs = require('fs').promises
 const path = require('path')
 
-//solo()
+// solo()
 
 test('Macros, devices and basics', async (assert) => {
   const assemble = requireUncached('../assembler.js')
@@ -148,6 +148,13 @@ test('relative label to main', async (assert) => {
   const assemble = requireUncached('../assembler.js')
   const rom = await fs.readFile(path.join(__dirname, 'roms', '21.rom'))
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '21.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
+test('drum rack', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '22.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '22.tal'))).toString()
   assert.is(assemble(code), rom.toString('hex'))
 })
 

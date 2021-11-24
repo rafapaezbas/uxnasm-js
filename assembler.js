@@ -1,4 +1,4 @@
-const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, anyChar, possibly, many, many1, everyCharUntil } = require('arcsecond')
+const { sequenceOf, whitespace, endOfInput, anyOfString, str, choice, char, possibly, many, many1, everyCharUntil } = require('arcsecond')
 
 let currentLabel = 'default'
 let currentPad = 256 // By default, write in main memory
@@ -63,9 +63,9 @@ f.comment = (e) => {
 
 f.label = (e, i, acc) => {
   currentLabel = e.value[1].join('')
-  if(currentPad < 256){
+  if (currentPad < 256) {
     labels.set(e.value[1].join(''), toHex(currentPad))
-  }else{
+  } else {
     labels.set(e.value[1].join(''), toHex(acc.length / 2))
   }
 }
@@ -112,7 +112,6 @@ f.word = (e) => {
   if (value) {
     return value
   } else {
-    console.log(e)
     throw new Error('Macro not found: ' + e.value.join(''))
   }
 }
@@ -184,8 +183,6 @@ const assemble = (code) => {
   const firstPass = ast.reduce((acc, e, i) => {
     const next = f[e.type] !== undefined ? f[e.type](e, i, acc) : undefined
     if (next) {
-	    //console.log(e)
-	    //console.log(next)
       return acc + next
     } else {
       return acc
