@@ -1,0 +1,8 @@
+|10 @Console [ &vector $2 &read $1 &pad $5 &write $1 &error $1 ]
+
+@program
+|100
+	,label JMP $10
+
+@label
+LIT 'h .Console/write  DEO

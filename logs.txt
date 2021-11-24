@@ -1,0 +1,6479 @@
+
+> uxn-assembler@1.0.0 test /home/rpaezbas/uxn-assembler
+> brittle test/*.js
+
+TAP version 13
+# test/assembler.js
+            ok 1 - Macros, devices and basics # SKIP
+            ok 2 - Shorts and ops short mode # SKIP
+            ok 3 - Words not only letters # SKIP
+            ok 4 - Labels in main menory # SKIP
+            ok 5 - Sprites (addresses) # SKIP
+            ok 6 - label in page two of main # SKIP
+            ok 7 - label in page 10 of main # SKIP
+            ok 8 - Compudanzas day 3 (hello-keyboard) # SKIP
+            ok 9 - relative address non resolved # SKIP
+            ok 10 - relative address resolved # SKIP
+            ok 11 - compudanzas day 3 "draw with arrows" # SKIP
+            ok 12 - compudanzas day 4 "hello line" # SKIP
+            ok 13 - zero page variables # SKIP
+            ok 14 - compudanzas day 4 hello-animated-sprite # SKIP
+            ok 15 - moving sprite (compudanzas day 4) # SKIP
+            ok 16 - return mode # SKIP
+            ok 17 - compudanzas pong # SKIP
+            ok 18 - storyteller # SKIP
+{ type: 'ops', value: [ 'ADD', null, null, null, ' ' ] }
+18
+{ type: 'ops', value: [ 'SUB', null, null, null, ' ' ] }
+19
+{ type: 'ops', value: [ 'DIV', null, null, null, ' ' ] }
+1b
+{ type: 'ops', value: [ 'LTH', null, null, null, ' ' ] }
+0b
+{ type: 'ops', value: [ 'GTH', null, null, null, ' ' ] }
+0a
+{ type: 'ops', value: [ 'EQU', null, null, null, ' ' ] }
+08
+{ type: 'ops', value: [ 'NEQ', null, null, null, ' ' ] }
+09
+{ type: 'ops', value: [ 'ADD', '2', null, null, ' ' ] }
+38
+{ type: 'ops', value: [ 'SUB', '2', null, null, ' ' ] }
+39
+{ type: 'ops', value: [ 'DIV', '2', null, null, ' ' ] }
+3b
+{ type: 'ops', value: [ 'LTH', '2', null, null, ' ' ] }
+2b
+{ type: 'ops', value: [ 'GTH', '2', null, null, ' ' ] }
+2a
+{ type: 'ops', value: [ 'EQU', '2', null, null, ' ' ] }
+28
+{ type: 'ops', value: [ 'NEQ', '2', null, null, ' ' ] }
+29
+{ type: 'push', value: [ '#', '1', '0' ] }
+8010
+{ type: 'ops', value: [ 'SFT', null, null, null, ' ' ] }
+1f
+{ type: 'push', value: [ '#', '2', '0' ] }
+8020
+{ type: 'ops', value: [ 'SFT', null, null, null, ' ' ] }
+1f
+{ type: 'push', value: [ '#', '0', '2' ] }
+8002
+{ type: 'ops', value: [ 'SFT', null, null, null, ' ' ] }
+1f
+{ type: 'push', value: [ '#', '3', '0' ] }
+8030
+{ type: 'ops', value: [ 'SFT', null, null, null, ' ' ] }
+1f
+{ type: 'push', value: [ '#', '0', '3' ] }
+8003
+{ type: 'ops', value: [ 'SFT', null, null, null, ' ' ] }
+1f
+{ type: 'push', value: [ '#', '1', '0' ] }
+8010
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'push', value: [ '#', '2', '0' ] }
+8020
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'push', value: [ '#', '3', '0' ] }
+8030
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'push', value: [ '#', '0', '3' ] }
+8003
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'push', value: [ '#', '4', '0' ] }
+8040
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'push', value: [ '#', '0', '4' ] }
+8004
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'push', value: [ '#', '5', '0' ] }
+8050
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'push', value: [ '#', '0', '3' ] }
+8003
+{ type: 'ops', value: [ 'AND', null, null, null, ' ' ] }
+1c
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'p', 'r', 'i', 'n',
+      't', '-', 'h', 'e',
+      'x', '/', 'b', 'y',
+      't', 'e'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'push', value: [ '#', '0', 'a' ] }
+800a
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'C', 'o', 'n', 's',
+      'o', 'l', 'e', '/',
+      'w', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+80undefined
+{ type: 'ops', value: [ 'DEO', null, null, null, ' ' ] }
+17
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'p', 'r', 'i', 'n',
+      't', '-', 'h', 'e',
+      'x', '/', 's', 'h',
+      'o', 'r', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'push', value: [ '#', '0', 'a' ] }
+800a
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'C', 'o', 'n', 's',
+      'o', 'l', 'e', '/',
+      'w', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+80undefined
+{ type: 'ops', value: [ 'DEO', null, null, null, ' ' ] }
+17
+{ type: 'ops', value: [ 'JMP', '2', 'r', null, ' ' ] }
+6c
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{ type: 'ops', value: [ 'SWP', '2', null, null, ' ' ] }
+25
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{ type: 'ops', value: [ 'BRK', null, null, null, ' ' ] }
+00
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'ops', value: [ 'SWP', null, null, null, ' ' ] }
+05
+{ type: 'pushShort', value: [ '#', '0', 'e', '7', 'd' ] }
+a00e7d
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'y', 's',
+      't', 'e', 'm',
+      '/', 'r'
+    ]
+  ]
+}
+8008
+{ type: 'ops', value: [ 'DEO', '2', null, null, ' \n\t' ] }
+37
+{ type: 'pushShort', value: [ '#', '0', 'e', 'c', '6' ] }
+a00ec6
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'y', 's',
+      't', 'e', 'm',
+      '/', 'g'
+    ]
+  ]
+}
+800a
+{ type: 'ops', value: [ 'DEO', '2', null, null, ' \n\t' ] }
+37
+{ type: 'pushShort', value: [ '#', '0', 'e', '9', '5' ] }
+a00e95
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'y', 's',
+      't', 'e', 'm',
+      '/', 'b'
+    ]
+  ]
+}
+800c
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\n\t' ] }
+37
+{ type: 'pushShort', value: [ '#', '0', '0', '9', '0' ] }
+a00090
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'w',
+      'i', 'd', 't', 'h'
+    ]
+  ]
+}
+8022
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'pushShort', value: [ '#', '0', '1', '0', '0' ] }
+a00100
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'h',
+      'e', 'i', 'g', 'h',
+      't'
+    ]
+  ]
+}
+8024
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\n\t' ] }
+37
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'o', 'n', '-',
+      'm', 'o', 'u',
+      's', 'e'
+    ]
+  ]
+}
+a0____
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 'v', 'e',
+      'c', 't', 'o', 'r'
+    ]
+  ]
+}
+8090
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'o', 'n', '-',
+      'b', 'u', 't',
+      't', 'o', 'n'
+    ]
+  ]
+}
+a0____
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'C', 'o', 'n', 't', 'r',
+      'o', 'l', 'l', 'e', 'r',
+      '/', 'v', 'e', 'c', 't',
+      'o', 'r'
+    ]
+  ]
+}
+8080
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\n\t' ] }
+37
+{ type: 'pushShort', value: [ '#', '0', '1', '1', '0' ] }
+a00110
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'a',
+      'd', 's', 'r'
+    ]
+  ]
+}
+8038
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'absoluteAddress',
+  value: [ ';', [
+      's', 'i', 'n',
+      '-', 'p', 'c',
+      'm'
+    ] ]
+}
+a0____
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'a',
+      'd', 'd', 'r'
+    ]
+  ]
+}
+803c
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'pushShort', value: [ '#', '0', '1', '0', '0' ] }
+a00100
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'l',
+      'e', 'n', 'g', 't',
+      'h'
+    ]
+  ]
+}
+803a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'push', value: [ '#', 'd', 'd' ] }
+80dd
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'v',
+      'o', 'l', 'u', 'm',
+      'e'
+    ]
+  ]
+}
+803e
+{ type: 'ops', value: [ 'DEO', null, null, null, ' ' ] }
+17
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'w',
+      'i', 'd', 't', 'h'
+    ]
+  ]
+}
+8022
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{ type: 'word', value: [ '2', '/', '/' ] }
+80013f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'c', 'e', 'n',
+      't', 'e', 'r',
+      '/', 'x'
+    ]
+  ]
+}
+8014
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'h',
+      'e', 'i', 'g', 'h',
+      't'
+    ]
+  ]
+}
+8024
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{ type: 'word', value: [ '2', '/', '/' ] }
+80013f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'c', 'e', 'n',
+      't', 'e', 'r',
+      '/', 'y'
+    ]
+  ]
+}
+8016
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'c', 'e', 'n',
+      't', 'e', 'r',
+      '/', 'x'
+    ]
+  ]
+}
+8014
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '2', '0' ] }
+a00020
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+801d
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t\t' ] }
+31
+{ type: 'pushShort', value: [ '#', '0', '0', '4', '0' ] }
+a00040
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x', '2'
+    ]
+  ]
+}
+8021
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'c', 'e', 'n',
+      't', 'e', 'r',
+      '/', 'y'
+    ]
+  ]
+}
+8016
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '1', '8' ] }
+a00018
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+801f
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t\t' ] }
+31
+{ type: 'pushShort', value: [ '#', '0', '0', '4', '0' ] }
+a00040
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y', '2'
+    ]
+  ]
+}
+8023
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+801d
+{ type: 'ops', value: [ 'LDZ', '2', null, null, '\n\t' ] }
+30
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'm', 'o', 'd', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+8025
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t\t' ] }
+31
+{ type: 'pushShort', value: [ '#', '0', '0', '4', '0' ] }
+a00040
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'm', 'o', 'd', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x', '2'
+    ]
+  ]
+}
+8029
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+801f
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '4', '0' ] }
+a00040
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'm', 'o', 'd', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+8027
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t\t' ] }
+31
+{ type: 'pushShort', value: [ '#', '0', '0', '1', '0' ] }
+a00010
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'm', 'o', 'd', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y', '2'
+    ]
+  ]
+}
+802b
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+801d
+{ type: 'ops', value: [ 'LDZ', '2', null, null, '\n\t' ] }
+30
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'b', 'i', 't', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+802d
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t\t' ] }
+31
+{ type: 'pushShort', value: [ '#', '0', '0', '4', '0' ] }
+a00040
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'b', 'i', 't', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x', '2'
+    ]
+  ]
+}
+8031
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+801f
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '5', '8' ] }
+a00058
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'b', 'i', 't', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t\t' ] }
+31
+{ type: 'pushShort', value: [ '#', '0', '0', '1', '0' ] }
+a00010
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'b', 'i', 't', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y', '2'
+    ]
+  ]
+}
+8033
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'c', 'e', 'n',
+      't', 'e', 'r',
+      '/', 'x'
+    ]
+  ]
+}
+8014
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '2', '0' ] }
+a00020
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'x'
+    ]
+  ]
+}
+8035
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t\t' ] }
+31
+{ type: 'pushShort', value: [ '#', '0', '0', '4', '0' ] }
+a00040
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'x', '2'
+    ]
+  ]
+}
+8039
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'c', 'e', 'n',
+      't', 'e', 'r',
+      '/', 'y'
+    ]
+  ]
+}
+8016
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '2', 'a' ] }
+a0002a
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'y'
+    ]
+  ]
+}
+8037
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t\t' ] }
+31
+{ type: 'pushShort', value: [ '#', '0', '0', '1', '0' ] }
+a00010
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'y', '2'
+    ]
+  ]
+}
+803b
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\n\t' ] }
+31
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'l', 'o', 'a', 'd',
+      '-', 't', 'h', 'e',
+      'm', 'e'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\n' ] }
+00
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'C', 'o', 'n', 't',
+      'r', 'o', 'l', 'l',
+      'e', 'r', '/', 'k',
+      'e', 'y'
+    ]
+  ]
+}
+8083
+{ type: 'ops', value: [ 'DEI', null, null, null, ' ' ] }
+16
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'c', 'o',
+      'n', 't', 'i',
+      'n', 'u', 'e'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'r', 'e', 'd', 'r', 'a', 'w' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\t\t' ] }
+00
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'C', 'o', 'n', 't',
+      'r', 'o', 'l', 'l',
+      'e', 'r', '/', 'k',
+      'e', 'y'
+    ]
+  ]
+}
+8083
+{ type: 'ops', value: [ 'DEI', null, null, null, ' \n\t' ] }
+16
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', 'd' ] }
+800d
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o',
+      '-', 'e', 'n',
+      't', 'e', 'r'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [
+      'd', 'o', '-',
+      'p', 'u', 's',
+      'h'
+    ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'POP', null, null, null, ' ' ] }
+02
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\t\t' ] }
+00
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'ops', value: [ 'LIT', null, null, null, ' ' ] }
+80
+{ type: 'literalChar', value: [ "'", '+' ] }
+2b
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 'a', 'd',
+      'd'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' \n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 'a', 'd', 'd' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'POP', null, null, null, ' ' ] }
+02
+{ type: 'ops', value: [ 'BRK', null, null, null, ' ' ] }
+00
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'ops', value: [ 'LIT', null, null, null, ' ' ] }
+80
+{ type: 'literalChar', value: [ "'", '-' ] }
+2d
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 's', 'u',
+      'b'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' \n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 's', 'u', 'b' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'POP', null, null, null, ' ' ] }
+02
+{ type: 'ops', value: [ 'BRK', null, null, null, ' ' ] }
+00
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'ops', value: [ 'LIT', null, null, null, ' ' ] }
+80
+{ type: 'literalChar', value: [ "'", '*' ] }
+2a
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 'm', 'u',
+      'l'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' \n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 'm', 'u', 'l' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'POP', null, null, null, ' ' ] }
+02
+{ type: 'ops', value: [ 'BRK', null, null, null, ' ' ] }
+00
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'ops', value: [ 'LIT', null, null, null, ' ' ] }
+80
+{ type: 'literalChar', value: [ "'", '/' ] }
+2f
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 'd', 'i',
+      'v'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' \n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 'd', 'i', 'v' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'POP', null, null, null, ' ' ] }
+02
+{ type: 'ops', value: [ 'BRK', null, null, null, ' ' ] }
+00
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '1', 'b' ] }
+801b
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 'e', 's',
+      'c'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 'p', 'o', 'p' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'POP', null, null, null, ' ' ] }
+02
+{ type: 'ops', value: [ 'BRK', null, null, null, ' ' ] }
+00
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '8' ] }
+8008
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o', '-',
+      'b', 'a', 'c', 'k',
+      's', 'p', 'a', 'c',
+      'e'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'push', value: [ '#', '0', '4' ] }
+8004
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t\t' ] }
+31
+{ type: 'push', value: [ '#', 'f', 'f' ] }
+80ff
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'i', 'n', 'p',
+      'u', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{ type: 'ops', value: [ 'POP', null, null, null, ' ' ] }
+02
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\t\t' ] }
+00
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'k', 'e', 'y',
+      '-', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'p', 'u', 's', 'h',
+      '-', 'i', 'n', 'p',
+      'u', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\n' ] }
+00
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'p', 'o', 'i', 'n',
+      't', 'e', 'r', '-',
+      'i', 'c', 'n'
+    ]
+  ]
+}
+a0____
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'd', 'd', 'r'
+    ]
+  ]
+}
+802c
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i',
+      'n', 't', 'e',
+      'r', '/', 'x'
+    ]
+  ]
+}
+8018
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i',
+      'n', 't', 'e',
+      'r', '/', 'y'
+    ]
+  ]
+}
+801a
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'push', value: [ '#', '4', '0' ] }
+8040
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\n\t' ] }
+17
+{
+  type: 'zeroPageAddress',
+  value: [ '.', [
+      'M', 'o', 'u',
+      's', 'e', '/',
+      'x'
+    ] ]
+}
+8092
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i',
+      'n', 't', 'e',
+      'r', '/', 'x'
+    ]
+  ]
+}
+8018
+{ type: 'ops', value: [ 'STZ', '2', null, null, ' \n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [ '.', [
+      'M', 'o', 'u',
+      's', 'e', '/',
+      'y'
+    ] ]
+}
+8094
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i',
+      'n', 't', 'e',
+      'r', '/', 'y'
+    ]
+  ]
+}
+801a
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i',
+      'n', 't', 'e',
+      'r', '/', 'x'
+    ]
+  ]
+}
+8018
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i',
+      'n', 't', 'e',
+      'r', '/', 'y'
+    ]
+  ]
+}
+801a
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'push', value: [ '#', '4', '1' ] }
+8041
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 's', 't',
+      'a', 't', 'e'
+    ]
+  ]
+}
+8096
+{ type: 'ops', value: [ 'DEI', null, null, null, ' ' ] }
+16
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '=' ] }
+08
+{ type: 'word', value: [ '+' ] }
+18
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\n\t' ] }
+17
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 's', 't',
+      'a', 't', 'e'
+    ]
+  ]
+}
+8096
+{ type: 'ops', value: [ 'DEI', null, null, null, ' ' ] }
+16
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i', 'n',
+      't', 'e', 'r', '/',
+      'l', 'a', 's', 't'
+    ]
+  ]
+}
+801c
+{ type: 'ops', value: [ 'LDZ', null, null, null, '\n\t' ] }
+10
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{ type: 'pushShort', value: [ '#', '0', '1', '0', '0' ] }
+a00100
+{ type: 'word', value: [ '!', '!' ] }
+29
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o',
+      '-', 'd', 'o',
+      'w', 'n'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 's', 't',
+      'a', 't', 'e'
+    ]
+  ]
+}
+8096
+{ type: 'ops', value: [ 'DEI', null, null, null, ' ' ] }
+16
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i', 'n',
+      't', 'e', 'r', '/',
+      'l', 'a', 's', 't'
+    ]
+  ]
+}
+801c
+{ type: 'ops', value: [ 'STZ', null, null, null, '\n\t\t' ] }
+11
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\t\t' ] }
+22
+{
+  type: 'zeroPageAddress',
+  value: [ '.', [
+      'M', 'o', 'u',
+      's', 'e', '/',
+      'x'
+    ] ]
+}
+8092
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{
+  type: 'zeroPageAddress',
+  value: [ '.', [
+      'M', 'o', 'u',
+      's', 'e', '/',
+      'y'
+    ] ]
+}
+8094
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' \n\t\t' ] }
+36
+{ type: 'ops', value: [ 'OVR', '2', null, null, ' ' ] }
+26
+{ type: 'ops', value: [ 'OVR', '2', null, null, ' ' ] }
+26
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e'
+    ]
+  ]
+}
+8000
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'w', 'i', 't', 'h',
+      'i', 'n', '-', 'r',
+      'e', 'c', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'c', 'l', 'i', 'c',
+      'k', '-', 'k', 'e',
+      'y', 'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JCN', '2', null, null, '\n\t\t' ] }
+2d
+{ type: 'ops', value: [ 'OVR', '2', null, null, ' ' ] }
+26
+{ type: 'ops', value: [ 'OVR', '2', null, null, ' ' ] }
+26
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e'
+    ]
+  ]
+}
+8000
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'w', 'i', 't', 'h',
+      'i', 'n', '-', 'r',
+      'e', 'c', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'c', 'l', 'i', 'c',
+      'k', '-', 'i', 'n',
+      'p', 'u', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JCN', '2', null, null, '\n\t\t' ] }
+2d
+{ type: 'ops', value: [ 'OVR', '2', null, null, ' ' ] }
+26
+{ type: 'ops', value: [ 'OVR', '2', null, null, ' ' ] }
+26
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'm', 'o', 'd', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e'
+    ]
+  ]
+}
+8000
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'w', 'i', 't', 'h',
+      'i', 'n', '-', 'r',
+      'e', 'c', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'c', 'l', 'i', 'c',
+      'k', '-', 'm', 'o',
+      'd', 'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JCN', '2', null, null, '\n\t\t' ] }
+2d
+{ type: 'ops', value: [ 'OVR', '2', null, null, ' ' ] }
+26
+{ type: 'ops', value: [ 'OVR', '2', null, null, ' ' ] }
+26
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'b', 'i', 't', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e'
+    ]
+  ]
+}
+8000
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'w', 'i', 't', 'h',
+      'i', 'n', '-', 'r',
+      'e', 'c', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'c', 'l', 'i', 'c',
+      'k', '-', 'b', 'i',
+      't', 'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JCN', '2', null, null, '\n\t\t' ] }
+2d
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\t\t' ] }
+22
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\t\t' ] }
+00
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '1' ] }
+a00001
+{ type: 'word', value: [ '!', '!' ] }
+29
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'n', 'o', '-', 'u', 'p' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 's', 't',
+      'a', 't', 'e'
+    ]
+  ]
+}
+8096
+{ type: 'ops', value: [ 'DEI', null, null, null, ' ' ] }
+16
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i', 'n',
+      't', 'e', 'r', '/',
+      'l', 'a', 's', 't'
+    ]
+  ]
+}
+801c
+{ type: 'ops', value: [ 'STZ', null, null, null, '\n\t\t' ] }
+11
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'r', 'e', 'd', 'r', 'a', 'w' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\t\t' ] }
+00
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\t' ] }
+22
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 's', 't',
+      'a', 't', 'e'
+    ]
+  ]
+}
+8096
+{ type: 'ops', value: [ 'DEI', null, null, null, ' ' ] }
+16
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'p', 'o', 'i', 'n',
+      't', 'e', 'r', '/',
+      'l', 'a', 's', 't'
+    ]
+  ]
+}
+801c
+{ type: 'ops', value: [ 'STZ', null, null, null, '\n\n' ] }
+11
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\n' ] }
+00
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+801f
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'word', value: [ '1', '0', '/', '/' ] }
+80043f
+{ type: 'word', value: [ '4', '*', '*' ] }
+80203f
+{ type: 'ops', value: [ 'SWP', '2', null, null, ' ' ] }
+25
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+801d
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'word', value: [ '1', '0', '/', '/' ] }
+80043f
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '3' ] }
+a00003
+{ type: 'ops', value: [ 'AND', '2', null, null, '\n\t' ] }
+3c
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '/', 'l',
+      'a', 'y', 'o', 'u',
+      't'
+    ]
+  ]
+}
+a0____
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'LDA', null, null, null, ' ' ] }
+14
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'p', 'u', 's', 'h',
+      '-', 'i', 'n', 'p',
+      'u', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n\t' ] }
+2e
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 's', 't',
+      'a', 't', 'e'
+    ]
+  ]
+}
+8096
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\n' ] }
+17
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\n' ] }
+00
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\t' ] }
+22
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'm', 'o', 'd', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+8025
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'word', value: [ '1', '0', '/', '/' ] }
+80043f
+{ type: 'ops', value: [ 'NIP', null, null, null, '\n\t' ] }
+04
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 'a', 'd',
+      'd'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 'a', 'd', 'd' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 's', 'u',
+      'b'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 's', 'u', 'b' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '2' ] }
+8002
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 'm', 'u',
+      'l'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 'm', 'u', 'l' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '3' ] }
+8003
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 'd', 'i',
+      'v'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 'd', 'i', 'v' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'POP', null, null, null, '\n\n\t' ] }
+02
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'b', 'i', 't',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 's', 't',
+      'a', 't', 'e'
+    ]
+  ]
+}
+8096
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\n' ] }
+17
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\n' ] }
+00
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'b', 'i', 't', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'word', value: [ '8', '/', '/' ] }
+80033f
+{ type: 'ops', value: [ 'NIP', null, null, null, ' ' ] }
+04
+{ type: 'word', value: [ '8', '*' ] }
+80301f
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t' ] }
+0f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'b', 'i', 't', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+802d
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'word', value: [ '8', '/', '/' ] }
+80033f
+{ type: 'ops', value: [ 'NIP', null, null, null, ' ' ] }
+04
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{ type: 'word', value: [ '+' ] }
+18
+{ type: 'ops', value: [ 'STH', 'k', null, null, '\n\n\t' ] }
+8f
+{ type: 'push', value: [ '#', '3', '0' ] }
+8030
+{ type: 'word', value: [ '+' ] }
+18
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'p',
+      'i', 't', 'c', 'h'
+    ]
+  ]
+}
+803f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\n\t' ] }
+17
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '1' ] }
+a00001
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{ type: 'push', value: [ '#', '0', 'f' ] }
+800f
+{ type: 'ops', value: [ 'SWP', null, null, null, ' ' ] }
+05
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'push', value: [ '#', '4', '0' ] }
+8040
+{ type: 'ops', value: [ 'SFT', null, null, null, ' ' ] }
+1f
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'ops', value: [ 'EOR', '2', null, null, ' \n\t\t' ] }
+3e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\n\t' ] }
+31
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 's', 't',
+      'a', 't', 'e'
+    ]
+  ]
+}
+8096
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'b', 'i', 't',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\n' ] }
+00
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\t' ] }
+22
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'x'
+    ]
+  ]
+}
+8035
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'word', value: [ '8', '/', '/' ] }
+80033f
+{ type: 'ops', value: [ 'NIP', null, null, null, '\n\t' ] }
+04
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o',
+      '-', 'p', 'u',
+      's', 'h'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [
+      'd', 'o', '-',
+      'p', 'u', 's',
+      'h'
+    ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '!' ] }
+09
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 'p', 'o',
+      'p'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'd', 'o', '-', 'p', 'o', 'p' ] ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{ type: 'ops', value: [ 'POP', null, null, null, '\n\n\t' ] }
+02
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'M', 'o', 'u', 's',
+      'e', '/', 's', 't',
+      'a', 't', 'e'
+    ]
+  ]
+}
+8096
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\n' ] }
+17
+{ type: 'ops', value: [ 'BRK', null, null, null, '\n\n' ] }
+00
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '5', '0' ] }
+8050
+{ type: 'word', value: [ '+' ] }
+18
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'p',
+      'i', 't', 'c', 'h'
+    ]
+  ]
+}
+803f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '/', 's',
+      'e', 'r', 'i', 'e',
+      's'
+    ]
+  ]
+}
+a0____
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'LDA', null, null, null, ' ' ] }
+14
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'k', 'e', 'y',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'push', value: [ '#', '4', '0' ] }
+8040
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8000
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'ops', value: [ 'INC', null, null, null, ' ' ] }
+01
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8000
+{ type: 'ops', value: [ 'STZ', null, null, null, '\n\t' ] }
+11
+{ type: 'push', value: [ '#', 'f', 'f' ] }
+80ff
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'i', 'n', 'p',
+      'u', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'b', 'i', 't',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'word', value: [ '2', '*' ] }
+80101f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'i', 't',
+      'e', 'm', 's'
+    ]
+  ]
+}
+8004
+{ type: 'word', value: [ '+' ] }
+18
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'ops', value: [ 'INC', null, null, null, ' ' ] }
+01
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'STZ', null, null, null, '\n\t' ] }
+11
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '0' ] }
+a00000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'i', 'n', 'p',
+      'u', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 's', 't', 'a',
+      'c', 'k'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'word', value: [ '2', '*' ] }
+80101f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'i', 't',
+      'e', 'm', 's'
+    ]
+  ]
+}
+8004
+{ type: 'word', value: [ '+' ] }
+18
+{ type: 'ops', value: [ 'LDZ', '2', null, null, '\n\t' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '0' ] }
+a00000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'word', value: [ '2', '*' ] }
+80101f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'i', 't',
+      'e', 'm', 's'
+    ]
+  ]
+}
+8004
+{ type: 'word', value: [ '+' ] }
+18
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '-' ] }
+19
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'STZ', null, null, null, '\n\t' ] }
+11
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'i', 'n', 'p',
+      'u', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 's', 't', 'a',
+      'c', 'k'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '0' ] }
+a00000
+{ type: 'word', value: [ '>', '>' ] }
+2a
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o', 't',
+      '-', 'e', 'm', 'p',
+      't', 'y'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'push', value: [ '#', '0', '7' ] }
+8007
+{ type: 'word', value: [ '<' ] }
+0b
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o',
+      't', '-', 'f',
+      'u', 'l', 'l'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'push', value: [ '#', '4', '0' ] }
+8040
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'p',
+      'i', 't', 'c', 'h'
+    ]
+  ]
+}
+803f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'u', 's', 'h' ] ] }
+a003fe
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '0' ] }
+a00000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'STZ', '2', null, null, '\n\t' ] }
+31
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'word', value: [ '=' ] }
+08
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'c', 'o',
+      'n', 't', 'i',
+      'n', 'u', 'e'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{ type: 'push', value: [ '#', '4', '1' ] }
+8041
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'p',
+      'i', 't', 'c', 'h'
+    ]
+  ]
+}
+803f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t\t' ] }
+17
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'o', 'p' ] ] }
+a00420
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\t\t' ] }
+22
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 's', 't', 'a',
+      'c', 'k'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'i', 'n', 'p',
+      'u', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '0' ] }
+a00000
+{ type: 'word', value: [ '=', '=' ] }
+28
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o',
+      '-', 'p', 'u',
+      's', 'h'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [
+      'd', 'o', '-',
+      'p', 'u', 's',
+      'h'
+    ] ]
+}
+a00451
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '>' ] }
+0a
+{ type: 'word', value: [ 'R', 'T', 'N', '?' ] }
+80010d6c
+{ type: 'push', value: [ '#', '4', '2' ] }
+8042
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'p',
+      'i', 't', 'c', 'h'
+    ]
+  ]
+}
+803f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'm', 'o', 'd',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'o', 'p' ] ] }
+a00420
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'o', 'p' ] ] }
+a00420
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'SWP', '2', null, null, ' ' ] }
+25
+{ type: 'ops', value: [ 'ADD', '2', null, null, ' ' ] }
+38
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'u', 's', 'h' ] ] }
+a003fe
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '0' ] }
+a00000
+{ type: 'word', value: [ '=', '=' ] }
+28
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o',
+      '-', 'p', 'u',
+      's', 'h'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [
+      'd', 'o', '-',
+      'p', 'u', 's',
+      'h'
+    ] ]
+}
+a00451
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '>' ] }
+0a
+{ type: 'word', value: [ 'R', 'T', 'N', '?' ] }
+80010d6c
+{ type: 'push', value: [ '#', '4', '3' ] }
+8043
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'p',
+      'i', 't', 'c', 'h'
+    ]
+  ]
+}
+803f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'm', 'o', 'd',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'o', 'p' ] ] }
+a00420
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'o', 'p' ] ] }
+a00420
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'SWP', '2', null, null, ' ' ] }
+25
+{ type: 'ops', value: [ 'SUB', '2', null, null, ' ' ] }
+39
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'u', 's', 'h' ] ] }
+a003fe
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '0' ] }
+a00000
+{ type: 'word', value: [ '=', '=' ] }
+28
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o',
+      '-', 'p', 'u',
+      's', 'h'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [
+      'd', 'o', '-',
+      'p', 'u', 's',
+      'h'
+    ] ]
+}
+a00451
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '>' ] }
+0a
+{ type: 'word', value: [ 'R', 'T', 'N', '?' ] }
+80010d6c
+{ type: 'push', value: [ '#', '4', '4' ] }
+8044
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'p',
+      'i', 't', 'c', 'h'
+    ]
+  ]
+}
+803f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{ type: 'push', value: [ '#', '0', '2' ] }
+8002
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'm', 'o', 'd',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'o', 'p' ] ] }
+a00420
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'o', 'p' ] ] }
+a00420
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'SWP', '2', null, null, ' ' ] }
+25
+{ type: 'ops', value: [ 'MUL', '2', null, null, ' ' ] }
+3a
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'u', 's', 'h' ] ] }
+a003fe
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '0' ] }
+a00000
+{ type: 'word', value: [ '=', '=' ] }
+28
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'n', 'o',
+      '-', 'p', 'u',
+      's', 'h'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{
+  type: 'absoluteAddress',
+  value: [ ';', [
+      'd', 'o', '-',
+      'p', 'u', 's',
+      'h'
+    ] ]
+}
+a00451
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '>' ] }
+0a
+{ type: 'word', value: [ 'R', 'T', 'N', '?' ] }
+80010d6c
+{ type: 'push', value: [ '#', '4', '5' ] }
+8045
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'A', 'u', 'd', 'i',
+      'o', '0', '/', 'p',
+      'i', 't', 'c', 'h'
+    ]
+  ]
+}
+803f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{ type: 'push', value: [ '#', '0', '3' ] }
+8003
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'm', 'o', 'd',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'o', 'p' ] ] }
+a00420
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'o', 'p' ] ] }
+a00420
+{ type: 'ops', value: [ 'JSR', '2', null, null, ' ' ] }
+2e
+{ type: 'ops', value: [ 'SWP', '2', null, null, ' ' ] }
+25
+{ type: 'ops', value: [ 'DIV', '2', null, null, ' ' ] }
+3b
+{ type: 'absoluteAddress', value: [ ';', [ 'p', 'u', 's', 'h' ] ] }
+a003fe
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '2', 'f' ] }
+802f
+{ type: 'word', value: [ '>' ] }
+0a
+{ type: 'ops', value: [ 'OVR', null, null, null, ' ' ] }
+06
+{ type: 'push', value: [ '#', '3', 'a' ] }
+803a
+{ type: 'word', value: [ '<' ] }
+0b
+{ type: 'pushShort', value: [ '#', '0', '1', '0', '1' ] }
+a00101
+{ type: 'word', value: [ '!', '!' ] }
+29
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'n', 'o',
+      '-', 'n', 'u',
+      'm'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{ type: 'push', value: [ '#', '3', '0' ] }
+8030
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '6', '0' ] }
+8060
+{ type: 'word', value: [ '>' ] }
+0a
+{ type: 'ops', value: [ 'OVR', null, null, null, ' ' ] }
+06
+{ type: 'push', value: [ '#', '6', '7' ] }
+8067
+{ type: 'word', value: [ '<' ] }
+0b
+{ type: 'pushShort', value: [ '#', '0', '1', '0', '1' ] }
+a00101
+{ type: 'word', value: [ '!', '!' ] }
+29
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'n', 'o', '-', 'l', 'c' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{ type: 'push', value: [ '#', '5', '7' ] }
+8057
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '4', '0' ] }
+8040
+{ type: 'word', value: [ '>' ] }
+0a
+{ type: 'ops', value: [ 'OVR', null, null, null, ' ' ] }
+06
+{ type: 'push', value: [ '#', '4', '7' ] }
+8047
+{ type: 'word', value: [ '<' ] }
+0b
+{ type: 'pushShort', value: [ '#', '0', '1', '0', '1' ] }
+a00101
+{ type: 'word', value: [ '!', '!' ] }
+29
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'n', 'o', '-', 'u', 'c' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{ type: 'push', value: [ '#', '3', '7' ] }
+8037
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'POP', null, null, null, ' ' ] }
+02
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'push', value: [ '#', 'f', 'f' ] }
+80ff
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'k', 'e', 'y',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{ type: 'push', value: [ '#', 'f', 'f' ] }
+80ff
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'm', 'o', 'd',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{ type: 'push', value: [ '#', 'f', 'f' ] }
+80ff
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'i', 'n', 'p',
+      'u', 't'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'b', 'i', 't',
+      'p', 'a', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t' ] }
+2e
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 's', 't', 'a',
+      'c', 'k'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JSR', null, null, null, '\n\n' ] }
+0e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'push', value: [ '#', '0', '8' ] }
+8008
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '8' ] }
+8008
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'word', value: [ '>' ] }
+0a
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t\t' ] }
+0f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ '2', '*' ] }
+80101f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'i', 't',
+      'e', 'm', 's'
+    ]
+  ]
+}
+8004
+{ type: 'word', value: [ '+' ] }
+18
+{ type: 'push', value: [ '#', '1', '0' ] }
+8010
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      's', 't', 'a', 'c',
+      'k', '/', 'l', 'e',
+      'n', 'g', 't', 'h'
+    ]
+  ]
+}
+8003
+{ type: 'ops', value: [ 'LDZ', null, null, null, ' ' ] }
+10
+{ type: 'word', value: [ '2', '*' ] }
+80101f
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'ops', value: [ 'STH', '2', null, null, '\n\t\t' ] }
+2f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{ type: 'word', value: [ '8', '*', '*' ] }
+80303f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'y'
+    ]
+  ]
+}
+8037
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'pushShort', value: [ '#', '0', '0', '4', 'c' ] }
+a0004c
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'ops', value: [ 'STH', '2', null, null, '\n\t\t' ] }
+2f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'x'
+    ]
+  ]
+}
+8035
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '2', '0' ] }
+a00020
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'STH', '2', 'r', null, ' ' ] }
+6f
+{ type: 'ops', value: [ 'STH', '2', 'r', null, ' ' ] }
+6f
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 's', 'h', 'o',
+      'r', 't'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JSR', null, null, null, '\n\t\t' ] }
+0e
+{ type: 'ops', value: [ 'INC', null, null, null, ' ' ] }
+01
+{ type: 'ops', value: [ 'GTH', 'k', null, null, ' ' ] }
+8a
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'l', 'o', 'o', 'p' ] ]
+}
+80bf
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\n' ] }
+22
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'STH', null, null, null, ' ' ] }
+0f
+{ type: 'ops', value: [ 'STH', '2', null, null, '\n\t' ] }
+2f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'pushShort', value: [ '#', '0', '0', '2', '0' ] }
+a00020
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'push', value: [ '#', '0', '4' ] }
+8004
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '8' ] }
+a00008
+{ type: 'word', value: [ '-', '-' ] }
+39
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t\t' ] }
+37
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'ops', value: [ 'STH', '2', 'k', 'r', ' ' ] }
+ef
+{ type: 'ops', value: [ 'ROT', null, null, null, ' ' ] }
+07
+{ type: 'word', value: [ '4', '*' ] }
+80201f
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'pushShort', value: [ '#', '0', '0', '0', 'f' ] }
+a0000f
+{ type: 'ops', value: [ 'AND', '2', null, null, '\n\t\t' ] }
+3c
+{ type: 'word', value: [ '8', '*', '*' ] }
+80303f
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'f', 'o', 'n',
+      't', '-', 'h',
+      'e', 'x'
+    ]
+  ]
+}
+a0____
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'd', 'd', 'r'
+    ]
+  ]
+}
+802c
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t\t' ] }
+37
+{ type: 'ops', value: [ 'ROT', 'r', null, null, ' ' ] }
+47
+{ type: 'ops', value: [ 'STH', 'k', 'r', null, ' \n\t\t' ] }
+cf
+{ type: 'ops', value: [ 'ROT', 'r', null, null, ' ' ] }
+47
+{ type: 'ops', value: [ 'ROT', 'r', null, null, '\n\t\t' ] }
+47
+{ type: 'ops', value: [ 'OVR', null, null, null, ' ' ] }
+06
+{ type: 'ops', value: [ 'STH', '2', 'k', 'r', ' ' ] }
+ef
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      'g', 'e', 't', '-',
+      'l', 'e', 'n', 'g',
+      't', 'h'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JSR', null, null, null, ' ' ] }
+0e
+{ type: 'word', value: [ '<' ] }
+0b
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      '&', 'v', 'i',
+      's', 'i', 'b',
+      'l', 'e'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t\t' ] }
+0d
+{ type: 'ops', value: [ 'POP', null, null, null, ' ' ] }
+02
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t\t' ] }
+17
+{ type: 'ops', value: [ 'INC', null, null, null, ' ' ] }
+01
+{ type: 'ops', value: [ 'GTH', 'k', null, null, ' ' ] }
+8a
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'l', 'o', 'o', 'p' ] ]
+}
+80c9
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\t' ] }
+22
+{ type: 'ops', value: [ 'POP', '2', 'r', null, ' ' ] }
+62
+{ type: 'ops', value: [ 'POP', 'r', null, null, '\n\n' ] }
+42
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{ type: 'pushShort', value: [ '#', '1', '0', '0', '0' ] }
+a01000
+{ type: 'word', value: [ '<', '<' ] }
+2b
+{ type: 'relativeAddress', value: [ ',', [ '&', 'n', 'o', '4' ] ] }
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'push', value: [ '#', '0', '4' ] }
+8004
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{ type: 'pushShort', value: [ '#', '0', '1', '0', '0' ] }
+a00100
+{ type: 'word', value: [ '<', '<' ] }
+2b
+{ type: 'relativeAddress', value: [ ',', [ '&', 'n', 'o', '3' ] ] }
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'push', value: [ '#', '0', '3' ] }
+8003
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{ type: 'pushShort', value: [ '#', '0', '0', '1', '0' ] }
+a00010
+{ type: 'word', value: [ '<', '<' ] }
+2b
+{ type: 'relativeAddress', value: [ ',', [ '&', 'n', 'o', '2' ] ] }
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'push', value: [ '#', '0', '2' ] }
+8002
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '0' ] }
+a00000
+{ type: 'word', value: [ '!', '!' ] }
+29
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\n\t' ] }
+0f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'x'
+    ]
+  ]
+}
+8035
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '2', '0' ] }
+a00020
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'y'
+    ]
+  ]
+}
+8037
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '3' ] }
+a00003
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, '\n\t' ] }
+30
+{ type: 'push', value: [ '#', '0', '2' ] }
+8002
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 's', 'h', 'o',
+      'r', 't'
+    ]
+  ]
+}
+a005fd
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n\t' ] }
+2e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'x'
+    ]
+  ]
+}
+8035
+{ type: 'ops', value: [ 'LDZ', '2', null, null, '\n\t' ] }
+30
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'y'
+    ]
+  ]
+}
+8037
+{ type: 'ops', value: [ 'LDZ', '2', null, null, '\n\t' ] }
+30
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      's', 't', 'a', 'c',
+      'k', '-', 'i', 'c',
+      'n', 's', '/', 'p',
+      'u', 's', 'h'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'STH', 'k', 'r', null, ' ' ] }
+cf
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'word', value: [ '=' ] }
+08
+{ type: 'push', value: [ '#', '0', '2' ] }
+8002
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'k', 'e', 'y',
+      '-', 't', 'h', 'i',
+      'n'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n\t' ] }
+2e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'x'
+    ]
+  ]
+}
+8035
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '8' ] }
+a00008
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'y'
+    ]
+  ]
+}
+8037
+{ type: 'ops', value: [ 'LDZ', '2', null, null, '\n\t' ] }
+30
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      's', 't', 'a', 'c',
+      'k', '-', 'i', 'c',
+      'n', 's', '/', 'p',
+      'o', 'p'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'STH', 'k', 'r', null, ' ' ] }
+cf
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ '=' ] }
+08
+{ type: 'push', value: [ '#', '0', '3' ] }
+8003
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a', 'w',
+      '-', 'k', 'e', 'y',
+      '-', 't', 'h', 'i',
+      'n'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n\t' ] }
+2e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'x'
+    ]
+  ]
+}
+8035
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' \n\t' ] }
+30
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'x', '2'
+    ]
+  ]
+}
+8039
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' \n\t' ] }
+30
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '-', 'f', 'r',
+      'a', 'm', 'e', '/',
+      'y'
+    ]
+  ]
+}
+8037
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '4' ] }
+a00004
+{ type: 'word', value: [ '-', '-' ] }
+39
+{ type: 'push', value: [ '#', '0', '2' ] }
+8002
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'l', 'i', 'n', 'e',
+      '-', 'h', 'o', 'r',
+      '-', 'd', 'o', 't',
+      't', 'e', 'd'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n\t' ] }
+2e
+{ type: 'ops', value: [ 'POP', 'r', null, null, '\n\n' ] }
+42
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t' ] }
+0f
+{ type: 'push', value: [ '#', '1', '0' ] }
+8010
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '/', 'c',
+      'o', 'l', 'o', 'r'
+    ]
+  ]
+}
+a0____
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'LDA', null, null, null, ' ' ] }
+14
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t\t' ] }
+0f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'ops', value: [ 'OVR', 'r', null, null, ' ' ] }
+46
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{ type: 'word', value: [ '=' ] }
+08
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t\t' ] }
+0f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '/', 'l',
+      'a', 'y', 'o', 'u',
+      't'
+    ]
+  ]
+}
+a0____
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'LDA', null, null, null, ' \n\t\t\t' ] }
+14
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{ type: 'word', value: [ '8', '*', '*' ] }
+80303f
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'f', 'o', 'n',
+      't', '-', 'h',
+      'e', 'x'
+    ]
+  ]
+}
+a0____
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'STH', '2', null, null, '\n\t\t' ] }
+2f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ '4', 'M', 'O', 'D' ] }
+80031c
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{ type: 'word', value: [ '1', '0', '*', '*' ] }
+80403f
+{ type: 'ops', value: [ 'STH', '2', null, null, '\n\t\t' ] }
+2f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ '4', '/' ] }
+80021f
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{ type: 'word', value: [ '1', '0', '*', '*' ] }
+80403f
+{ type: 'ops', value: [ 'STH', '2', 'r', null, ' ' ] }
+6f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+801d
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'SWP', '2', null, null, ' \n\t\t' ] }
+25
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'k', 'e', 'y', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+801f
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'STH', '2', 'r', null, ' ' ] }
+6f
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a',
+      'w', '-', 'k',
+      'e', 'y'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{ type: 'ops', value: [ 'INC', null, null, null, ' ' ] }
+01
+{ type: 'ops', value: [ 'GTH', 'k', null, null, ' ' ] }
+8a
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'l', 'o', 'o', 'p' ] ]
+}
+80b2
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\t' ] }
+22
+{ type: 'ops', value: [ 'POP', 'r', null, null, '\n\n' ] }
+42
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t' ] }
+0f
+{ type: 'push', value: [ '#', '0', '4' ] }
+8004
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'ops', value: [ 'STH', 'k', 'r', null, ' ' ] }
+cf
+{ type: 'word', value: [ '=' ] }
+08
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t\t' ] }
+0f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{ type: 'word', value: [ '8', '*', '*' ] }
+80303f
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'm', 'o', 'd',
+      '-', 'i', 'c',
+      'n', 's'
+    ]
+  ]
+}
+a0____
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'STH', '2', null, null, '\n\t\t' ] }
+2f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'm', 'o', 'd', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+8027
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'ops', value: [ 'STH', '2', null, null, '\n\t\t' ] }
+2f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{ type: 'word', value: [ '1', '0', '*', '*' ] }
+80403f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'm', 'o', 'd', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+8025
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'STH', '2', null, null, '\n\t\t' ] }
+2f
+{ type: 'ops', value: [ 'STH', '2', 'r', null, ' ' ] }
+6f
+{ type: 'ops', value: [ 'STH', '2', 'r', null, ' ' ] }
+6f
+{ type: 'ops', value: [ 'STH', '2', 'r', null, ' ' ] }
+6f
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{ type: 'push', value: [ '#', '0', '3' ] }
+8003
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'd', 'r', 'a',
+      'w', '-', 'k',
+      'e', 'y'
+    ]
+  ]
+}
+a0____
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\t\t' ] }
+2e
+{ type: 'ops', value: [ 'INC', null, null, null, ' ' ] }
+01
+{ type: 'ops', value: [ 'GTH', 'k', null, null, ' ' ] }
+8a
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'l', 'o', 'o', 'p' ] ]
+}
+80d1
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\t' ] }
+22
+{ type: 'ops', value: [ 'POP', 'r', null, null, '\n\n' ] }
+42
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'push', value: [ '#', '1', '0' ] }
+8010
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', 'f' ] }
+800f
+{ type: 'ops', value: [ 'SWP', null, null, null, ' ' ] }
+05
+{ type: 'word', value: [ '-' ] }
+19
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'i', 'n', 'p', 'u',
+      't', '/', 'v', 'a',
+      'l', 'u', 'e'
+    ]
+  ]
+}
+8001
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'ops', value: [ 'ROT', null, null, null, ' ' ] }
+07
+{ type: 'ops', value: [ 'SFT', '2', null, null, ' ' ] }
+3f
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '1' ] }
+a00001
+{ type: 'ops', value: [ 'AND', '2', null, null, ' ' ] }
+3c
+{ type: 'ops', value: [ 'NIP', null, null, null, ' ' ] }
+04
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t\t' ] }
+0f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'word', value: [ '8', '/' ] }
+80031f
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{ type: 'word', value: [ '8', '*', '*' ] }
+80303f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'b', 'i', 't', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'y'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'STH', '2', null, null, '\n\t\t' ] }
+2f
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '7' ] }
+8007
+{ type: 'ops', value: [ 'AND', null, null, null, ' ' ] }
+1c
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{ type: 'word', value: [ '8', '*', '*' ] }
+80303f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'b', 'i', 't', 'p',
+      'a', 'd', '-', 'f',
+      'r', 'a', 'm', 'e',
+      '/', 'x'
+    ]
+  ]
+}
+802d
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'word', value: [ '+', '+' ] }
+38
+{ type: 'ops', value: [ 'STH', '2', 'r', null, ' ' ] }
+6f
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{
+  type: 'relativeAddress',
+  value: [
+    ',',
+    [
+      'd', 'r', 'a',
+      'w', '-', 'b',
+      'i', 't'
+    ]
+  ]
+}
+++++
+{ type: 'ops', value: [ 'JSR', null, null, null, '\n\t\t' ] }
+0e
+{ type: 'ops', value: [ 'INC', null, null, null, ' ' ] }
+01
+{ type: 'ops', value: [ 'GTH', 'k', null, null, ' ' ] }
+8a
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'l', 'o', 'o', 'p' ] ]
+}
+80c7
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, '\n\n' ] }
+22
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t' ] }
+0f
+{ type: 'word', value: [ '8', '*' ] }
+80301f
+{ type: 'word', value: [ 'T', 'O', 'S' ] }
+800005
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'b', 'i', 't',
+      '-', 'i', 'c',
+      'n', 's'
+    ]
+  ]
+}
+a0____
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'd', 'd', 'r'
+    ]
+  ]
+}
+802c
+{ type: 'ops', value: [ 'DEO', '2', null, null, ' \n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\t\n\n' ] }
+17
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'push', value: [ '#', '0', '5' ] }
+8005
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'u', 't', 'o'
+    ]
+  ]
+}
+8026
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'c', 'o', 'l', 'o', 'r' ] ]
+}
+++++
+{ type: 'ops', value: [ 'STR', null, null, null, '\n\t' ] }
+13
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 's', 't', 'a', 't', 'e' ] ]
+}
+++++
+{ type: 'ops', value: [ 'STR', null, null, null, '\n\t' ] }
+13
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'g', 'l', 'y', 'p', 'h' ] ]
+}
+++++
+{ type: 'ops', value: [ 'STR', '2', null, null, '\n\t' ] }
+33
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'b', 'u', 't', 't',
+      'o', 'n', '-', 'i',
+      'c', 'n', 's'
+    ]
+  ]
+}
+a0____
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 's', 't', 'a', 't', 'e' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, ' ' ] }
+12
+{ type: 'word', value: [ '2', '0', '*', '*' ] }
+80503f
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'd', 'd', 'r'
+    ]
+  ]
+}
+802c
+{ type: 'ops', value: [ 'DEO', '2', null, null, ' \n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'c', 'o', 'l', 'o', 'r' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, ' ' ] }
+12
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'c', 'o', 'l', 'o', 'r' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, ' ' ] }
+12
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{ type: 'pushShort', value: [ '#', '0', '0', '1', '0' ] }
+a00010
+{ type: 'word', value: [ '-', '-' ] }
+39
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '8' ] }
+a00008
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'c', 'o', 'l', 'o', 'r' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, ' ' ] }
+12
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'c', 'o', 'l', 'o', 'r' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, ' ' ] }
+12
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'g', 'l', 'y', 'p', 'h' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', '2', null, null, ' ' ] }
+32
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'd', 'd', 'r'
+    ]
+  ]
+}
+802c
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{ type: 'pushShort', value: [ '#', '0', '0', '0', 'c' ] }
+a0000c
+{ type: 'word', value: [ '-', '-' ] }
+39
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '5' ] }
+a00005
+{ type: 'word', value: [ '-', '-' ] }
+39
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'c', 'o', 'l', 'o', 'r' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, '   ' ] }
+12
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 's', 't', 'a', 't', 'e' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, ' ' ] }
+12
+{ type: 'push', value: [ '#', '0', '9' ] }
+8009
+{ type: 'ops', value: [ 'MUL', null, null, null, ' ' ] }
+1a
+{ type: 'word', value: [ '+' ] }
+18
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'u', 't', 'o'
+    ]
+  ]
+}
+8026
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\n' ] }
+17
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'relativePad', value: [ '$', [ '1' ] ] }
+00
+{ type: 'relativePad', value: [ '$', [ '1' ] ] }
+00
+{ type: 'relativePad', value: [ '$', [ '2' ] ] }
+0000
+{ type: 'push', value: [ '#', '0', '6' ] }
+8006
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'u', 't', 'o'
+    ]
+  ]
+}
+8026
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'c', 'o', 'l', 'o', 'r' ] ]
+}
+++++
+{ type: 'ops', value: [ 'STR', null, null, null, '\n\t' ] }
+13
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 's', 't', 'a', 't', 'e' ] ]
+}
+++++
+{ type: 'ops', value: [ 'STR', null, null, null, '\n\t' ] }
+13
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'g', 'l', 'y', 'p', 'h' ] ]
+}
+++++
+{ type: 'ops', value: [ 'STR', '2', null, null, '\n\t' ] }
+33
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      'b', 'u', 't', 't',
+      'o', 'n', '-', 't',
+      'h', 'i', 'n', '-',
+      'i', 'c', 'n', 's'
+    ]
+  ]
+}
+a0____
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 's', 't', 'a', 't', 'e' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, ' ' ] }
+12
+{ type: 'word', value: [ '1', '0', '*', '*' ] }
+80403f
+{ type: 'word', value: [ '+', '+' ] }
+38
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'd', 'd', 'r'
+    ]
+  ]
+}
+802c
+{ type: 'ops', value: [ 'DEO', '2', null, null, ' \n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'c', 'o', 'l', 'o', 'r' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, ' ' ] }
+12
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'c', 'o', 'l', 'o', 'r' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', null, null, null, ' ' ] }
+12
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'g', 'l', 'y', 'p', 'h' ] ]
+}
+++++
+{ type: 'ops', value: [ 'LDR', '2', null, null, ' ' ] }
+32
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'd', 'd', 'r'
+    ]
+  ]
+}
+802c
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{ type: 'pushShort', value: [ '#', '0', '0', '0', 'c' ] }
+a0000c
+{ type: 'word', value: [ '-', '-' ] }
+39
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'push', value: [ '#', '0', '5' ] }
+8005
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 's',
+      'p', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+802f
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'a',
+      'u', 't', 'o'
+    ]
+  ]
+}
+8026
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\n' ] }
+17
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'relativePad', value: [ '$', [ '1' ] ] }
+00
+{ type: 'relativePad', value: [ '$', [ '1' ] ] }
+00
+{ type: 'relativePad', value: [ '$', [ '2' ] ] }
+0000
+{ type: 'string', value: [ '"', [ '.', 't', 'h', 'e', 'm', 'e' ] ] }
+2e7468656d65
+{ type: 'relativePad', value: [ '$', [ '1' ] ] }
+00
+{
+  type: 'absoluteAddress',
+  value: [
+    ';',
+    [
+      't', 'h', 'e',
+      'm', 'e', '-',
+      't', 'x', 't'
+    ]
+  ]
+}
+a0087b
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'F', 'i', 'l',
+      'e', '/', 'n',
+      'a', 'm', 'e'
+    ]
+  ]
+}
+80a8
+{ type: 'ops', value: [ 'DEO', '2', null, null, ' \n\t' ] }
+37
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '6' ] }
+a00006
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'F', 'i', 'l', 'e',
+      '/', 'l', 'e', 'n',
+      'g', 't', 'h'
+    ]
+  ]
+}
+80aa
+{ type: 'ops', value: [ 'DEO', '2', null, null, ' \n\t' ] }
+37
+{ type: 'pushShort', value: [ '#', 'f', 'f', 'f', 'a' ] }
+a0fffa
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'F', 'i', 'l',
+      'e', '/', 'l',
+      'o', 'a', 'd'
+    ]
+  ]
+}
+80ac
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\n\t' ] }
+37
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'F', 'i', 'l', 'e',
+      '/', 's', 'u', 'c',
+      'c', 'e', 's', 's'
+    ]
+  ]
+}
+80a2
+{ type: 'ops', value: [ 'DEI', '2', null, null, ' ' ] }
+36
+{ type: 'pushShort', value: [ '#', '0', '0', '0', '6' ] }
+a00006
+{ type: 'word', value: [ '!', '!' ] }
+29
+{
+  type: 'relativeAddress',
+  value: [ ',', [
+      '&', 'i', 'g',
+      'n', 'o', 'r',
+      'e'
+    ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t\t' ] }
+0d
+{ type: 'pushShort', value: [ '#', 'f', 'f', 'f', 'a' ] }
+a0fffa
+{ type: 'ops', value: [ 'LDA', '2', null, null, ' ' ] }
+34
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'y', 's',
+      't', 'e', 'm',
+      '/', 'r'
+    ]
+  ]
+}
+8008
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t\t' ] }
+37
+{ type: 'pushShort', value: [ '#', 'f', 'f', 'f', 'c' ] }
+a0fffc
+{ type: 'ops', value: [ 'LDA', '2', null, null, ' ' ] }
+34
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'y', 's',
+      't', 'e', 'm',
+      '/', 'g'
+    ]
+  ]
+}
+800a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t\t' ] }
+37
+{ type: 'pushShort', value: [ '#', 'f', 'f', 'f', 'e' ] }
+a0fffe
+{ type: 'ops', value: [ 'LDA', '2', null, null, ' ' ] }
+34
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'y', 's',
+      't', 'e', 'm',
+      '/', 'b'
+    ]
+  ]
+}
+800c
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t\t' ] }
+37
+{
+  type: 'absoluteAddress',
+  value: [ ';', [ 'r', 'e', 'd', 'r', 'a', 'w' ] ]
+}
+a0059c
+{ type: 'ops', value: [ 'JSR', '2', null, null, '\n\n' ] }
+2e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'STH', null, null, null, '\n\t' ] }
+0f
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{ type: 'ops', value: [ 'STH', 'k', 'r', null, ' ' ] }
+cf
+{ type: 'push', value: [ '#', '0', '2' ] }
+8002
+{ type: 'ops', value: [ 'ADD', null, null, null, ' ' ] }
+18
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'ops', value: [ 'LTH', '2', null, null, ' ' ] }
+2b
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 's', 'k', 'i', 'p' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{ type: 'ops', value: [ 'STH', 'k', 'r', null, ' ' ] }
+cf
+{ type: 'push', value: [ '#', '0', '6' ] }
+8006
+{ type: 'ops', value: [ 'ADD', null, null, null, ' ' ] }
+18
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'ops', value: [ 'GTH', '2', null, null, ' ' ] }
+2a
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 's', 'k', 'i', 'p' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'SWP', '2', null, null, '\n\t' ] }
+25
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{ type: 'ops', value: [ 'STH', 'k', 'r', null, ' ' ] }
+cf
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'ops', value: [ 'LTH', '2', null, null, ' ' ] }
+2b
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 's', 'k', 'i', 'p' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{ type: 'ops', value: [ 'STH', 'k', 'r', null, ' ' ] }
+cf
+{ type: 'push', value: [ '#', '0', '4' ] }
+8004
+{ type: 'ops', value: [ 'ADD', null, null, null, ' ' ] }
+18
+{ type: 'ops', value: [ 'LDZ', '2', null, null, ' ' ] }
+30
+{ type: 'ops', value: [ 'GTH', '2', null, null, ' ' ] }
+2a
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 's', 'k', 'i', 'p' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'ops', value: [ 'POP', 'r', null, null, '\n\t' ] }
+42
+{ type: 'push', value: [ '#', '0', '1' ] }
+8001
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'ops', value: [ 'POP', 'r', null, null, '\n\t' ] }
+42
+{ type: 'push', value: [ '#', '0', '0' ] }
+8000
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'STH', null, null, null, ' ' ] }
+0f
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'y'
+    ]
+  ]
+}
+802a
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t' ] }
+37
+{ type: 'ops', value: [ 'SWP', '2', null, null, '\n\t' ] }
+25
+{ type: 'ops', value: [ 'DUP', '2', null, null, ' ' ] }
+23
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r',
+      'e', 'e', 'n',
+      '/', 'x'
+    ]
+  ]
+}
+8028
+{ type: 'ops', value: [ 'DEO', '2', null, null, '\n\t\t' ] }
+37
+{ type: 'ops', value: [ 'STH', 'k', 'r', null, ' ' ] }
+cf
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'S', 'c', 'r', 'e',
+      'e', 'n', '/', 'p',
+      'i', 'x', 'e', 'l'
+    ]
+  ]
+}
+802e
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t\t' ] }
+17
+{ type: 'ops', value: [ 'INC', '2', null, null, ' ' ] }
+21
+{ type: 'ops', value: [ 'INC', '2', null, null, ' ' ] }
+21
+{ type: 'ops', value: [ 'GTH', '2', 'k', null, ' ' ] }
+aa
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'l', 'o', 'o', 'p' ] ]
+}
+80f2
+{ type: 'ops', value: [ 'JCN', null, null, null, '\n\t' ] }
+0d
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'ops', value: [ 'POP', '2', null, null, ' ' ] }
+22
+{ type: 'ops', value: [ 'POP', 'r', null, null, '\n\n' ] }
+42
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'SWP', null, null, null, ' ' ] }
+05
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'e', 'c', 'h', 'o' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JSR', null, null, null, ' \n\t' ] }
+0e
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'e', 'c', 'h', 'o' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JSR', null, null, null, '\n\t' ] }
+0e
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'STH', 'k', null, null, ' ' ] }
+8f
+{ type: 'push', value: [ '#', '0', '4' ] }
+8004
+{ type: 'ops', value: [ 'SFT', null, null, null, ' ' ] }
+1f
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'p', 'a', 'r', 's', 'e' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JSR', null, null, null, ' ' ] }
+0e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'C', 'o', 'n', 's',
+      'o', 'l', 'e', '/',
+      'w', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+8018
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{ type: 'ops', value: [ 'STH', 'r', null, null, ' ' ] }
+4f
+{ type: 'push', value: [ '#', '0', 'f' ] }
+800f
+{ type: 'ops', value: [ 'AND', null, null, null, ' ' ] }
+1c
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'p', 'a', 'r', 's', 'e' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JSR', null, null, null, ' ' ] }
+0e
+{
+  type: 'zeroPageAddress',
+  value: [
+    '.',
+    [
+      'C', 'o', 'n', 's',
+      'o', 'l', 'e', '/',
+      'w', 'r', 'i', 't',
+      'e'
+    ]
+  ]
+}
+8018
+{ type: 'ops', value: [ 'DEO', null, null, null, '\n\t' ] }
+17
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'ops', value: [ 'DUP', null, null, null, ' ' ] }
+03
+{ type: 'push', value: [ '#', '0', '9' ] }
+8009
+{ type: 'ops', value: [ 'GTH', null, null, null, ' ' ] }
+0a
+{
+  type: 'relativeAddress',
+  value: [ ',', [ '&', 'a', 'b', 'o', 'v', 'e' ] ]
+}
+++++
+{ type: 'ops', value: [ 'JCN', null, null, null, ' ' ] }
+0d
+{ type: 'push', value: [ '#', '3', '0' ] }
+8030
+{ type: 'word', value: [ '+' ] }
+18
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'push', value: [ '#', '0', '9' ] }
+8009
+{ type: 'word', value: [ '-' ] }
+19
+{ type: 'push', value: [ '#', '6', '0' ] }
+8060
+{ type: 'word', value: [ '+' ] }
+18
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'word', value: [ 'R', 'T', 'N' ] }
+6c
+{ type: 'literalShort', value: [ '0', '7', '0', '8', ' ' ] }
+0708
+{ type: 'literalShort', value: [ '0', '9', '0', 'f', '\n\t\t' ] }
+090f
+{ type: 'literalShort', value: [ '0', '4', '0', '5', ' ' ] }
+0405
+{ type: 'literalShort', value: [ '0', '6', '0', 'e', '\n\t\t' ] }
+060e
+{ type: 'literalShort', value: [ '0', '1', '0', '2', ' ' ] }
+0102
+{ type: 'literalShort', value: [ '0', '3', '0', 'd', '\n\t\t' ] }
+030d
+{ type: 'literalShort', value: [ '0', '0', '0', 'a', ' ' ] }
+000a
+{ type: 'literalShort', value: [ '0', 'b', '0', 'c', '\n\t' ] }
+0b0c
+{ type: 'literalShort', value: [ '0', 'c', '0', '8', ' ' ] }
+0c08
+{ type: 'literalShort', value: [ '0', '9', '0', 'a', '\n\t\t' ] }
+090a
+{ type: 'literalShort', value: [ '0', '4', '0', '5', ' ' ] }
+0405
+{ type: 'literalShort', value: [ '0', '6', '0', '0', '\n\t\t' ] }
+0600
+{ type: 'literalShort', value: [ '0', '1', '0', '2', ' ' ] }
+0102
+{ type: 'literalShort', value: [ '0', 'd', '0', 'e', '\n\t\t' ] }
+0d0e
+{ type: 'literalShort', value: [ '0', 'f', '0', 'b', ' ' ] }
+0f0b
+{ type: 'literalShort', value: [ '0', '7', '0', '3', '\n\t' ] }
+0703
+{ type: 'literalShort', value: [ '0', '1', '0', '1', ' ' ] }
+0101
+{ type: 'literalShort', value: [ '0', '1', '0', '2', '\n\t\t' ] }
+0102
+{ type: 'literalShort', value: [ '0', '1', '0', '1', ' ' ] }
+0101
+{ type: 'literalShort', value: [ '0', '1', '0', '2', '\n\t\t' ] }
+0102
+{ type: 'literalShort', value: [ '0', '1', '0', '1', ' ' ] }
+0101
+{ type: 'literalShort', value: [ '0', '1', '0', '2', '\n\t\t' ] }
+0102
+{ type: 'literalShort', value: [ '0', '1', '0', '2', ' ' ] }
+0102
+{ type: 'literalShort', value: [ '0', '2', '0', '2', '\n\n' ] }
+0202
+{ type: 'literalShort', value: [ '8', '0', '8', '3', ' ' ] }
+8083
+{ type: 'literalShort', value: [ '8', '6', '8', '9', ' ' ] }
+8689
+{ type: 'literalShort', value: [ '8', 'c', '8', 'f', ' ' ] }
+8c8f
+{ type: 'literalShort', value: [ '9', '2', '9', '5', ' ' ] }
+9295
+{ type: 'literalShort', value: [ '9', '8', '9', 'b', ' ' ] }
+989b
+{ type: 'literalShort', value: [ '9', 'e', 'a', '1', ' ' ] }
+9ea1
+{ type: 'literalShort', value: [ 'a', '4', 'a', '7', ' ' ] }
+a4a7
+{ type: 'literalShort', value: [ 'a', 'a', 'a', 'd', '\n\t' ] }
+aaad
+{ type: 'literalShort', value: [ 'b', '0', 'b', '3', ' ' ] }
+b0b3
+{ type: 'literalShort', value: [ 'b', '6', 'b', '9', ' ' ] }
+b6b9
+{ type: 'literalShort', value: [ 'b', 'b', 'b', 'e', ' ' ] }
+bbbe
+{ type: 'literalShort', value: [ 'c', '1', 'c', '3', ' ' ] }
+c1c3
+{ type: 'literalShort', value: [ 'c', '6', 'c', '9', ' ' ] }
+c6c9
+{ type: 'literalShort', value: [ 'c', 'b', 'c', 'e', ' ' ] }
+cbce
+{ type: 'literalShort', value: [ 'd', '0', 'd', '2', ' ' ] }
+d0d2
+{ type: 'literalShort', value: [ 'd', '5', 'd', '7', '\n\t' ] }
+d5d7
+{ type: 'literalShort', value: [ 'd', '9', 'd', 'b', ' ' ] }
+d9db
+{ type: 'literalShort', value: [ 'd', 'e', 'e', '0', ' ' ] }
+dee0
+{ type: 'literalShort', value: [ 'e', '2', 'e', '4', ' ' ] }
+e2e4
+{ type: 'literalShort', value: [ 'e', '6', 'e', '7', ' ' ] }
+e6e7
+{ type: 'literalShort', value: [ 'e', '9', 'e', 'b', ' ' ] }
+e9eb
+{ type: 'literalShort', value: [ 'e', 'c', 'e', 'e', ' ' ] }
+ecee
+{ type: 'literalShort', value: [ 'f', '0', 'f', '1', ' ' ] }
+f0f1
+{ type: 'literalShort', value: [ 'f', '2', 'f', '4', '\n\t' ] }
+f2f4
+{ type: 'literalShort', value: [ 'f', '5', 'f', '6', ' ' ] }
+f5f6
+{ type: 'literalShort', value: [ 'f', '7', 'f', '8', ' ' ] }
+f7f8
+{ type: 'literalShort', value: [ 'f', '9', 'f', 'a', ' ' ] }
+f9fa
+{ type: 'literalShort', value: [ 'f', 'b', 'f', 'b', ' ' ] }
+fbfb
+{ type: 'literalShort', value: [ 'f', 'c', 'f', 'd', ' ' ] }
+fcfd
+{ type: 'literalShort', value: [ 'f', 'd', 'f', 'e', ' ' ] }
+fdfe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', '\n\t' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'f', 'f', 'e', ' ' ] }
+fffe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'd', 'f', 'd', ' ' ] }
+fdfd
+{ type: 'literalShort', value: [ 'f', 'c', 'f', 'b', ' ' ] }
+fcfb
+{ type: 'literalShort', value: [ 'f', 'b', 'f', 'a', ' ' ] }
+fbfa
+{ type: 'literalShort', value: [ 'f', '9', 'f', '8', ' ' ] }
+f9f8
+{ type: 'literalShort', value: [ 'f', '7', 'f', '6', '\n\t' ] }
+f7f6
+{ type: 'literalShort', value: [ 'f', '5', 'f', '4', ' ' ] }
+f5f4
+{ type: 'literalShort', value: [ 'f', '2', 'f', '1', ' ' ] }
+f2f1
+{ type: 'literalShort', value: [ 'f', '0', 'e', 'e', ' ' ] }
+f0ee
+{ type: 'literalShort', value: [ 'e', 'c', 'e', 'b', ' ' ] }
+eceb
+{ type: 'literalShort', value: [ 'e', '9', 'e', '7', ' ' ] }
+e9e7
+{ type: 'literalShort', value: [ 'e', '6', 'e', '4', ' ' ] }
+e6e4
+{ type: 'literalShort', value: [ 'e', '2', 'e', '0', ' ' ] }
+e2e0
+{ type: 'literalShort', value: [ 'd', 'e', 'd', 'b', '\n\t' ] }
+dedb
+{ type: 'literalShort', value: [ 'd', '9', 'd', '7', ' ' ] }
+d9d7
+{ type: 'literalShort', value: [ 'd', '5', 'd', '2', ' ' ] }
+d5d2
+{ type: 'literalShort', value: [ 'd', '0', 'c', 'e', ' ' ] }
+d0ce
+{ type: 'literalShort', value: [ 'c', 'b', 'c', '9', ' ' ] }
+cbc9
+{ type: 'literalShort', value: [ 'c', '6', 'c', '3', ' ' ] }
+c6c3
+{ type: 'literalShort', value: [ 'c', '1', 'b', 'e', ' ' ] }
+c1be
+{ type: 'literalShort', value: [ 'b', 'b', 'b', '9', ' ' ] }
+bbb9
+{ type: 'literalShort', value: [ 'b', '6', 'b', '3', '\n\t' ] }
+b6b3
+{ type: 'literalShort', value: [ 'b', '0', 'a', 'd', ' ' ] }
+b0ad
+{ type: 'literalShort', value: [ 'a', 'a', 'a', '7', ' ' ] }
+aaa7
+{ type: 'literalShort', value: [ 'a', '4', 'a', '1', ' ' ] }
+a4a1
+{ type: 'literalShort', value: [ '9', 'e', '9', 'b', ' ' ] }
+9e9b
+{ type: 'literalShort', value: [ '9', '8', '9', '5', ' ' ] }
+9895
+{ type: 'literalShort', value: [ '9', '2', '8', 'f', ' ' ] }
+928f
+{ type: 'literalShort', value: [ '8', 'c', '8', '9', ' ' ] }
+8c89
+{ type: 'literalShort', value: [ '8', '6', '8', '3', '\n\t' ] }
+8683
+{ type: 'literalShort', value: [ '8', '0', '7', 'd', ' ' ] }
+807d
+{ type: 'literalShort', value: [ '7', 'a', '7', '7', ' ' ] }
+7a77
+{ type: 'literalShort', value: [ '7', '4', '7', '1', ' ' ] }
+7471
+{ type: 'literalShort', value: [ '6', 'e', '6', 'b', ' ' ] }
+6e6b
+{ type: 'literalShort', value: [ '6', '8', '6', '5', ' ' ] }
+6865
+{ type: 'literalShort', value: [ '6', '2', '5', 'f', ' ' ] }
+625f
+{ type: 'literalShort', value: [ '5', 'c', '5', '9', ' ' ] }
+5c59
+{ type: 'literalShort', value: [ '5', '6', '5', '3', '\n\t' ] }
+5653
+{ type: 'literalShort', value: [ '5', '0', '4', 'd', ' ' ] }
+504d
+{ type: 'literalShort', value: [ '4', 'a', '4', '7', ' ' ] }
+4a47
+{ type: 'literalShort', value: [ '4', '5', '4', '2', ' ' ] }
+4542
+{ type: 'literalShort', value: [ '3', 'f', '3', 'd', ' ' ] }
+3f3d
+{ type: 'literalShort', value: [ '3', 'a', '3', '7', ' ' ] }
+3a37
+{ type: 'literalShort', value: [ '3', '5', '3', '2', ' ' ] }
+3532
+{ type: 'literalShort', value: [ '3', '0', '2', 'e', ' ' ] }
+302e
+{ type: 'literalShort', value: [ '2', 'b', '2', '9', '\n\t' ] }
+2b29
+{ type: 'literalShort', value: [ '2', '7', '2', '5', ' ' ] }
+2725
+{ type: 'literalShort', value: [ '2', '2', '2', '0', ' ' ] }
+2220
+{ type: 'literalShort', value: [ '1', 'e', '1', 'c', ' ' ] }
+1e1c
+{ type: 'literalShort', value: [ '1', 'a', '1', '9', ' ' ] }
+1a19
+{ type: 'literalShort', value: [ '1', '7', '1', '5', ' ' ] }
+1715
+{ type: 'literalShort', value: [ '1', '4', '1', '2', ' ' ] }
+1412
+{ type: 'literalShort', value: [ '1', '0', '0', 'f', ' ' ] }
+100f
+{ type: 'literalShort', value: [ '0', 'e', '0', 'c', '\n\t' ] }
+0e0c
+{ type: 'literalShort', value: [ '0', 'b', '0', 'a', ' ' ] }
+0b0a
+{ type: 'literalShort', value: [ '0', '9', '0', '8', ' ' ] }
+0908
+{ type: 'literalShort', value: [ '0', '7', '0', '6', ' ' ] }
+0706
+{ type: 'literalShort', value: [ '0', '5', '0', '5', ' ' ] }
+0505
+{ type: 'literalShort', value: [ '0', '4', '0', '3', ' ' ] }
+0403
+{ type: 'literalShort', value: [ '0', '3', '0', '2', ' ' ] }
+0302
+{ type: 'literalShort', value: [ '0', '2', '0', '2', ' ' ] }
+0202
+{ type: 'literalShort', value: [ '0', '2', '0', '2', '\n\t' ] }
+0202
+{ type: 'literalShort', value: [ '0', '1', '0', '2', ' ' ] }
+0102
+{ type: 'literalShort', value: [ '0', '2', '0', '2', ' ' ] }
+0202
+{ type: 'literalShort', value: [ '0', '2', '0', '2', ' ' ] }
+0202
+{ type: 'literalShort', value: [ '0', '3', '0', '3', ' ' ] }
+0303
+{ type: 'literalShort', value: [ '0', '4', '0', '5', ' ' ] }
+0405
+{ type: 'literalShort', value: [ '0', '5', '0', '6', ' ' ] }
+0506
+{ type: 'literalShort', value: [ '0', '7', '0', '8', ' ' ] }
+0708
+{ type: 'literalShort', value: [ '0', '9', '0', 'a', '\n\t' ] }
+090a
+{ type: 'literalShort', value: [ '0', 'b', '0', 'c', ' ' ] }
+0b0c
+{ type: 'literalShort', value: [ '0', 'e', '0', 'f', ' ' ] }
+0e0f
+{ type: 'literalShort', value: [ '1', '0', '1', '2', ' ' ] }
+1012
+{ type: 'literalShort', value: [ '1', '4', '1', '5', ' ' ] }
+1415
+{ type: 'literalShort', value: [ '1', '7', '1', '9', ' ' ] }
+1719
+{ type: 'literalShort', value: [ '1', 'a', '1', 'c', ' ' ] }
+1a1c
+{ type: 'literalShort', value: [ '1', 'e', '2', '0', ' ' ] }
+1e20
+{ type: 'literalShort', value: [ '2', '2', '2', '5', '\n\t' ] }
+2225
+{ type: 'literalShort', value: [ '2', '7', '2', '9', ' ' ] }
+2729
+{ type: 'literalShort', value: [ '2', 'b', '2', 'e', ' ' ] }
+2b2e
+{ type: 'literalShort', value: [ '3', '0', '3', '2', ' ' ] }
+3032
+{ type: 'literalShort', value: [ '3', '5', '3', '7', ' ' ] }
+3537
+{ type: 'literalShort', value: [ '3', 'a', '3', 'd', ' ' ] }
+3a3d
+{ type: 'literalShort', value: [ '3', 'f', '4', '2', ' ' ] }
+3f42
+{ type: 'literalShort', value: [ '4', '5', '4', '7', ' ' ] }
+4547
+{ type: 'literalShort', value: [ '4', 'a', '4', 'd', '\n\t' ] }
+4a4d
+{ type: 'literalShort', value: [ '5', '0', '5', '3', ' ' ] }
+5053
+{ type: 'literalShort', value: [ '5', '6', '5', '9', ' ' ] }
+5659
+{ type: 'literalShort', value: [ '5', 'c', '5', 'f', ' ' ] }
+5c5f
+{ type: 'literalShort', value: [ '6', '2', '6', '5', ' ' ] }
+6265
+{ type: 'literalShort', value: [ '6', '8', '6', 'b', ' ' ] }
+686b
+{ type: 'literalShort', value: [ '6', 'e', '7', '1', ' ' ] }
+6e71
+{ type: 'literalShort', value: [ '7', '4', '7', '7', ' ' ] }
+7477
+{ type: 'literalShort', value: [ '7', 'a', '7', 'd', '\n\n' ] }
+7a7d
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', '7', 'c', ' ' ] }
+827c
+{ type: 'literalShort', value: [ '0', '0', '3', '0', ' ' ] }
+0030
+{ type: 'literalShort', value: [ '1', '0', '1', '0', ' ' ] }
+1010
+{ type: 'literalShort', value: [ '1', '0', '1', '0', ' ' ] }
+1010
+{ type: 'literalShort', value: [ '1', '0', '1', '0', '\n\t' ] }
+1010
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '0', '2', ' ' ] }
+8202
+{ type: 'literalShort', value: [ '7', 'c', '8', '0', ' ' ] }
+7c80
+{ type: 'literalShort', value: [ '8', '0', 'f', 'e', ' ' ] }
+80fe
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '0', '2', ' ' ] }
+8202
+{ type: 'literalShort', value: [ '1', 'c', '0', '2', ' ' ] }
+1c02
+{ type: 'literalShort', value: [ '8', '2', '7', 'c', '\n\t' ] }
+827c
+{ type: 'literalShort', value: [ '0', '0', '0', 'c', ' ' ] }
+000c
+{ type: 'literalShort', value: [ '1', '4', '2', '4', ' ' ] }
+1424
+{ type: 'literalShort', value: [ '4', '4', '8', '4', ' ' ] }
+4484
+{ type: 'literalShort', value: [ 'f', 'e', '0', '4', ' ' ] }
+fe04
+{ type: 'literalShort', value: [ '0', '0', 'f', 'e', ' ' ] }
+00fe
+{ type: 'literalShort', value: [ '8', '0', '8', '0', ' ' ] }
+8080
+{ type: 'literalShort', value: [ '7', 'c', '0', '2', ' ' ] }
+7c02
+{ type: 'literalShort', value: [ '8', '2', '7', 'c', '\n\t' ] }
+827c
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '8', '0', ' ' ] }
+8280
+{ type: 'literalShort', value: [ 'f', 'c', '8', '2', ' ' ] }
+fc82
+{ type: 'literalShort', value: [ '8', '2', '7', 'c', ' ' ] }
+827c
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '0', '2', ' ' ] }
+8202
+{ type: 'literalShort', value: [ '1', 'e', '0', '2', ' ' ] }
+1e02
+{ type: 'literalShort', value: [ '0', '2', '0', '2', '\n\t' ] }
+0202
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '7', 'c', '8', '2', ' ' ] }
+7c82
+{ type: 'literalShort', value: [ '8', '2', '7', 'c', ' ' ] }
+827c
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '7', 'e', '0', '2', ' ' ] }
+7e02
+{ type: 'literalShort', value: [ '8', '2', '7', 'c', '\n\t' ] }
+827c
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '0', '2', ' ' ] }
+8202
+{ type: 'literalShort', value: [ '7', 'e', '8', '2', ' ' ] }
+7e82
+{ type: 'literalShort', value: [ '8', '2', '7', 'e', ' ' ] }
+827e
+{ type: 'literalShort', value: [ '0', '0', 'f', 'c', ' ' ] }
+00fc
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ 'f', 'c', '8', '2', ' ' ] }
+fc82
+{ type: 'literalShort', value: [ '8', '2', 'f', 'c', '\n\t' ] }
+82fc
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '8', '0', ' ' ] }
+8280
+{ type: 'literalShort', value: [ '8', '0', '8', '0', ' ' ] }
+8080
+{ type: 'literalShort', value: [ '8', '2', '7', 'c', ' ' ] }
+827c
+{ type: 'literalShort', value: [ '0', '0', 'f', 'c', ' ' ] }
+00fc
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', 'f', 'c', '\n\t' ] }
+82fc
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '8', '0', ' ' ] }
+8280
+{ type: 'literalShort', value: [ 'f', '0', '8', '0', ' ' ] }
+f080
+{ type: 'literalShort', value: [ '8', '2', '7', 'c', ' ' ] }
+827c
+{ type: 'literalShort', value: [ '0', '0', '7', 'c', ' ' ] }
+007c
+{ type: 'literalShort', value: [ '8', '2', '8', '0', ' ' ] }
+8280
+{ type: 'literalShort', value: [ 'f', '0', '8', '0', ' ' ] }
+f080
+{ type: 'literalShort', value: [ '8', '0', '8', '0', '\n\n' ] }
+8080
+{ type: 'literalShort', value: [ '0', '0', '1', '0', ' ' ] }
+0010
+{ type: 'literalShort', value: [ '1', '0', '1', '0', ' ' ] }
+1010
+{ type: 'literalShort', value: [ 'f', 'e', '1', '0', ' ' ] }
+fe10
+{ type: 'literalShort', value: [ '1', '0', '1', '0', '\n\t' ] }
+1010
+{ type: 'literalShort', value: [ '0', '0', '0', '0', ' ' ] }
+0000
+{ type: 'literalShort', value: [ '0', '0', '0', '0', ' ' ] }
+0000
+{ type: 'literalShort', value: [ 'f', 'e', '0', '0', ' ' ] }
+fe00
+{ type: 'literalShort', value: [ '0', '0', '0', '0', '\n\t' ] }
+0000
+{ type: 'literalShort', value: [ '0', '0', '1', '0', ' ' ] }
+0010
+{ type: 'literalShort', value: [ '5', '4', '2', '8', ' ' ] }
+5428
+{ type: 'literalShort', value: [ 'c', '6', '2', '8', ' ' ] }
+c628
+{ type: 'literalShort', value: [ '5', '4', '1', '0', '\n\t' ] }
+5410
+{ type: 'literalShort', value: [ '0', '0', '1', '0', ' ' ] }
+0010
+{ type: 'literalShort', value: [ '0', '0', '0', '0', ' ' ] }
+0000
+{ type: 'literalShort', value: [ 'f', 'e', '0', '0', ' ' ] }
+fe00
+{ type: 'literalShort', value: [ '0', '0', '1', '0', '\n\n' ] }
+0010
+{ type: 'literalShort', value: [ '3', 'f', '4', '0', ' ' ] }
+3f40
+{ type: 'literalShort', value: [ '8', '0', '8', '0', ' ' ] }
+8080
+{ type: 'literalShort', value: [ '8', '0', '8', '0', ' ' ] }
+8080
+{ type: 'literalShort', value: [ '8', '0', '8', '0', '\n\t\t' ] }
+8080
+{ type: 'literalShort', value: [ 'f', '8', '0', '4', ' ' ] }
+f804
+{ type: 'literalShort', value: [ '0', '2', '0', '2', ' ' ] }
+0202
+{ type: 'literalShort', value: [ '0', '2', '0', '2', ' ' ] }
+0202
+{ type: 'literalShort', value: [ '0', '2', '0', '2', '\n\t\t' ] }
+0202
+{ type: 'literalShort', value: [ '8', '0', '8', '0', ' ' ] }
+8080
+{ type: 'literalShort', value: [ '8', '0', '8', '0', ' ' ] }
+8080
+{ type: 'literalShort', value: [ '8', '0', '4', '0', ' ' ] }
+8040
+{ type: 'literalShort', value: [ '3', 'f', '0', '0', '\n\t\t' ] }
+3f00
+{ type: 'literalShort', value: [ '0', '2', '0', '2', ' ' ] }
+0202
+{ type: 'literalShort', value: [ '0', '2', '0', '2', ' ' ] }
+0202
+{ type: 'literalShort', value: [ '0', '2', '0', '4', ' ' ] }
+0204
+{ type: 'literalShort', value: [ 'f', '8', '0', '0', '\n\t' ] }
+f800
+{ type: 'literalShort', value: [ '3', 'f', '7', 'f', ' ' ] }
+3f7f
+{ type: 'literalShort', value: [ 'f', 'f', 'f', 'f', ' ' ] }
+ffff
+{ type: 'literalShort', value: [ 'f', 'f', 'f', 'f', ' ' ] }
+ffff
+{ type: 'literalShort', value: [ 'f', 'f', 'f', 'f', '\n\t\t' ] }
+ffff
+{ type: 'literalShort', value: [ 'f', '8', 'f', 'c', ' ' ] }
+f8fc
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', '\n\t\t' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'f', 'f', 'f', ' ' ] }
+ffff
+{ type: 'literalShort', value: [ 'f', 'f', 'f', 'f', ' ' ] }
+ffff
+{ type: 'literalShort', value: [ 'f', 'f', '7', 'f', ' ' ] }
+ff7f
+{ type: 'literalShort', value: [ '3', 'f', '0', '0', '\n\t\t' ] }
+3f00
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'c', ' ' ] }
+fefc
+{ type: 'literalShort', value: [ 'f', '8', '0', '0', '\n\n' ] }
+f800
+{ type: 'literalShort', value: [ '3', '8', '4', '4', ' ' ] }
+3844
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', '8', '2', '\n\t\t' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', '4', '4', ' ' ] }
+8244
+{ type: 'literalShort', value: [ '3', '8', '0', '0', '\n\t' ] }
+3800
+{ type: 'literalShort', value: [ '3', '8', '7', 'c', ' ' ] }
+387c
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', '\n\t\t' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', '7', 'c', ' ' ] }
+fe7c
+{ type: 'literalShort', value: [ '3', '8', '0', '0', '\n\n' ] }
+3800
+{ type: 'literalShort', value: [ '3', '8', '4', '4', ' ' ] }
+3844
+{ type: 'literalShort', value: [ '8', '2', '8', '2', ' ' ] }
+8282
+{ type: 'literalShort', value: [ '8', '2', '4', '4', ' ' ] }
+8244
+{ type: 'literalShort', value: [ '3', '8', '0', '0', '\n\t' ] }
+3800
+{ type: 'literalShort', value: [ '3', '8', '7', 'c', ' ' ] }
+387c
+{ type: 'literalShort', value: [ 'f', 'e', 'f', 'e', ' ' ] }
+fefe
+{ type: 'literalShort', value: [ 'f', 'e', '7', 'c', ' ' ] }
+fe7c
+{ type: 'literalShort', value: [ '3', '8', '0', '0', '\n\n' ] }
+3800
+{ type: 'literalShort', value: [ '0', '0', '0', '0', ' ' ] }
+0000
+{ type: 'literalShort', value: [ '1', '0', '2', '8', ' ' ] }
+1028
+{ type: 'literalShort', value: [ '1', '0', '0', '0', ' ' ] }
+1000
+{ type: 'literalShort', value: [ '0', '0', '0', '0', '\n\t' ] }
+0000
+{ type: 'literalShort', value: [ '0', '0', '0', '0', ' ' ] }
+0000
+{ type: 'literalShort', value: [ '2', '8', '1', '0', ' ' ] }
+2810
+{ type: 'literalShort', value: [ '2', '8', '0', '0', ' ' ] }
+2800
+{ type: 'literalShort', value: [ '0', '0', '0', '0', '\n\n' ] }
+0000
+{ type: 'literalShort', value: [ '8', '0', 'c', '0', ' ' ] }
+80c0
+{ type: 'literalShort', value: [ 'e', '0', 'f', '0', ' ' ] }
+e0f0
+{ type: 'literalShort', value: [ 'f', '8', 'e', '0', ' ' ] }
+f8e0
+{ type: 'literalShort', value: [ '1', '0', '0', '0', '\n' ] }
+1000
+# calc
+    not ok 1 - should be equal
+      ---
+      actual: a00e7d800837a00ec6800a37a00e95800c37a00090802237a00100802437a00260809037a001e0808037a00110803837a00962803c37a00100803a3780dd803e1780223680013f80143180243680013f801631801430a000203923801d31a0004038802131801630a000183923801f31a0004038802331801d3023802531a0004038802931801f30a000403823802731a0001038802b31801d3023802d31a0004038803131801f30a000583823802f31a0001038803331801430a000203923803531a0004038803931801630a0002a3923803731a0001038803b31a008822e0080831680000980050da0059c2e0080831603800d0980060da004512e020003802b0980060da004972e020003802d0980060da004c92e020003802a0980060da004fb2e020003802f0980060da0052d2e020003801b0980060da004732e02000380080980110d80013080043f80013180ffa006712e0200a0055f2ea003cb2e00a00b82802c37801830802837801a30802a378040802f17809236801831809436801a31801830802837801a30802a37804180961680010818802f17809616801c1023a001002980400d809616801c112280923680943626268000a008b82ea003052d26268000a008b82ea003a52d26268000a008b82ea0032b2d26268000a008b82ea0036b2d22220023a0000129800c0d809616801c1122a0059c2e0022809616801c1100801f303980043f80203f25801d303980043fa000033c38a009323814a003cb2e800080961700228025303980043f040380000980040da004972e0380010980040da004c92e0380020980040da004fb2e0380030980040da0052d2e02a007552e800080961700802f303980033f0480301f0f802d303980033f044f188f803018803f17800130a000014f800f051980401f3f3e8001318000809617a007552e00228035303980033f040380000980040da004512e0380010980040da004732e0280008096170003805018803f1703800005a009423814a006c82e80000580013080403f388001318000100180001180ffa006712ea007552e6c80031080101f8004183180031001800311a000008001318000a006712ea005b62e6c80031080011980101f80041830a0000080031080011980101f800418318003108001198003118001a006712ea005b62e6c800130a000002a80010d6c80031080070b80010d6c8040803f17800130a003fe2e6ca00000800131800310800008800e0d8041803f17a004202e22a005b62e8001a006712e6c800130a000002880040da004512e80031080010a80010d6c8042803f178000a0071e2ea004202ea004202e2538a003fe2e6c800130a000002880040da004512e80031080010a80010d6c8043803f178001a0071e2ea004202ea004202e2539a003fe2e6c800130a000002880040da004512e80031080010a80010d6c8044803f178002a0071e2ea004202ea004202e253aa003fe2e6c800130a000002880040da004512e80031080010a80010d6c8045803f178003a0071e2ea004202ea004202e253ba003fe2e6c03802f0a06803a0ba001012980040d8030196c0380600a0680670ba001012980040d8057196c0380400a0680470ba001012980040d8037196c0280006c80ffa006c82e80ffa0071e2e80ffa006712ea007552e80010e6c80088000038008800310198001190a0f0380101f800418801080031080101f1919302f0380000580303f80373038a0004c392f803530a00020386f6f4f80070e018a80bf0d226c0f2f802a37a000203880283780048000802836a000083980283703ef0780201f3fa0000f3c80303fa00a6238802c3747cf474706ef80130e0b80030d028000802f17018a80c90d2262426c23a010002b80040d2280046c23a001002b80040d2280036c23a000102b80040d2280026ca00000296c0f803530a0002038803730a00003388001308002a005fd2e803530803730a00b72cf8000088002a0082d2e803530a0000838803730a00b7acf8001088003a0082d2e803530803930803730a00004398002a008eb2e426c0f8010800003800005a0095238140f03464f080f03800005a00932381480000580303fa00a62382f0380031c80000580403f2f0380021f80000580403f6f801d303825801f30386f4f4fa007ad2e018a80b20d22426c0f8004800003cf080f0380000580303fa00ae2382f8027302f0380000580403f802530382f6f6f6f4f8003a007ad2e018a80d10d22426c8010800003800f0519800130073fa000013c040f0380031f80000580303f802f30382f0380071c80000580303f802d30386f4f800180070e018a80c70d226c0f80301f800005a00b6238802c37802a378028374f802f176c8005802617807413807213807033a00b02800080671280503f38802c37802a37802837805612802f17805012802f17802836a0001039802837802a36a0000838802a37803612802f17803012802f17802c32802c37802836a0000c39802837802a36a0000539802a37801012800e1280091a18802f1780008026176c000000008006802617804213804013803e33a00b42800080351280403f38802c37802a37802837802412802f17801e12802f17801a32802c37802a36a0000c39802a378005802f1780008026176c000000002e7468656d6500a0087b80a837a0000680aa37a0fffa80ac3780a236a000062980150da0fffa34800837a0fffc34800a37a0fffe34800c37a0059c2e6c0f23cf800218302b80220d23cf800618302a80180d2523cf302b80100d23cf800418302a80060d22224280016c22224280006c0f802a372523802837cf802e172121aa80f20d2222426c0580040e80010e6c8f80041f800e0e8018174f800f1c80040e8018176c0380090a80040d8030186c8009198060186c6c0708090f0405060e0102030d000a0b0c0c08090a0405060001020d0e0f0b070301010102010101020101010201020202808386898c8f9295989b9ea1a4a7aaadb0b3b6b9bbbec1c3c6c9cbced0d2d5d7d9dbdee0e2e4e6e7e9ebeceef0f1f2f4f5f6f7f8f9fafbfbfcfdfdfefefefefefffefefefefefdfdfcfbfbfaf9f8f7f6f5f4f2f1f0eeecebe9e7e6e4e2e0dedbd9d7d5d2d0cecbc9c6c3c1bebbb9b6b3b0adaaa7a4a19e9b9895928f8c898683807d7a7774716e6b6865625f5c595653504d4a4745423f3d3a373532302e2b29272522201e1c1a1917151412100f0e0c0b0a09080706050504030302020202020102020202020303040505060708090a0b0c0e0f1012141517191a1c1e20222527292b2e303235373a3d3f4245474a4d505356595c5f6265686b6e7174777a7d007c82828282827c0030101010101010007c82027c8080fe007c82021c02827c000c14244484fe0400fe80807c02827c007c8280fc82827c007c82021e020202007c82827c82827c007c82827e02827c007c82027e82827e00fc8282fc8282fc007c82808080827c00fc8282828282fc007c8280f080827c007c8280f080808000101010fe10101000000000fe00000000105428c628541000100000fe0000103f40808080808080f8040202020202028080808080403f00020202020204f8003f7ffffffffffffff8fcfefefefefefeffffffffff7f3f00fefefefefefcf80038448282828282828282828282443800387cfefefefefefefefefefefe7c38003844828282443800387cfefefe7c38000000102810000000000028102800000080c0e0f0f8e01000
+      expected: a00e7d800837a00ec6800a37a00e95800c37a00090802237a00100802437a00260809037a001e0808037a00110803837a00962803c37a00100803a3780dd803e1780223680013f80143180243680013f801631801430a000203923801d31a0004038802131801630a000183923801f31a0004038802331801d3023802531a0004038802931801f30a000403823802731a0001038802b31801d3023802d31a0004038803131801f30a000583823802f31a0001038803331801430a000203923803531a0004038803931801630a0002a3923803731a0001038803b31a008822e0080831680000980050da0059c2e0080831603800d0980060da004512e020003802b0980060da004972e020003802d0980060da004c92e020003802a0980060da004fb2e020003802f0980060da0052d2e020003801b0980060da004732e02000380080980110d80013080043f80013180ffa006712e0200a0055f2ea003cb2e00a00b82802c37801830802837801a30802a378040802f17809236801831809436801a31801830802837801a30802a37804180961680010818802f17809616801c1023a001002980400d809616801c11228092368094362626801da008b82ea003052d26268035a008b82ea003a52d26268025a008b82ea0032b2d2626802da008b82ea0036b2d22220023a0000129800c0d809616801c1122a0059c2e0022809616801c1100801f303980043f80203f25801d303980043fa000033c38a009323814a003cb2e800080961700228025303980043f040380000980040da004972e0380010980040da004c92e0380020980040da004fb2e0380030980040da0052d2e02a007552e800080961700802f303980033f0480301f0f802d303980033f044f188f803018803f17800130a000014f800f051980401f3f3e8001318000809617a007552e00228035303980033f040380000980040da004512e0380010980040da004732e0280008096170003805018803f1703800005a009423814a006c82e80000580013080403f388001318000100180001180ffa006712ea007552e6c80031080101f8004183180031001800311a000008001318000a006712ea005b62e6c80031080011980101f80041830a0000080031080011980101f800418318003108001198003118001a006712ea005b62e6c800130a000002a80010d6c80031080070b80010d6c8040803f17800130a003fe2e6ca00000800131800310800008800e0d8041803f17a004202e22a005b62e8001a006712e6c800130a000002880040da004512e80031080010a80010d6c8042803f178000a0071e2ea004202ea004202e2538a003fe2e6c800130a000002880040da004512e80031080010a80010d6c8043803f178001a0071e2ea004202ea004202e2539a003fe2e6c800130a000002880040da004512e80031080010a80010d6c8044803f178002a0071e2ea004202ea004202e253aa003fe2e6c800130a000002880040da004512e80031080010a80010d6c8045803f178003a0071e2ea004202ea004202e253ba003fe2e6c03802f0a06803a0ba001012980040d8030196c0380600a0680670ba001012980040d8057196c0380400a0680470ba001012980040d8037196c0280006c80ffa006c82e80ffa0071e2e80ffa006712ea007552e80010e6c80088000038008800310198001190a0f0380101f800418801080031080101f1919302f0380000580303f80373038a0004c392f803530a00020386f6f4f80070e018a80bf0d226c0f2f802a37a000203880283780048000802836a000083980283703ef0780201f3fa0000f3c80303fa00a6238802c3747cf474706ef80130e0b80030d028000802f17018a80c90d2262426c23a010002b80040d2280046c23a001002b80040d2280036c23a000102b80040d2280026ca00000296c0f803530a0002038803730a00003388001308002a005fd2e803530803730a00b72cf8000088002a0082d2e803530a0000838803730a00b7acf8001088003a0082d2e803530803930803730a00004398002a008eb2e426c0f8010800003800005a0095238140f03464f080f03800005a00932381480000580303fa00a62382f0380031c80000580403f2f0380021f80000580403f6f801d303825801f30386f4f4fa007ad2e018a80b20d22426c0f8004800003cf080f0380000580303fa00ae2382f8027302f0380000580403f802530382f6f6f6f4f8003a007ad2e018a80d10d22426c8010800003800f0519800130073fa000013c040f0380031f80000580303f802f30382f0380071c80000580303f802d30386f4f800180070e018a80c70d226c0f80301f800005a00b6238802c37802a378028374f802f176c8005802617807413807213807033a00b02800080671280503f38802c37802a37802837805612802f17805012802f17802836a0001039802837802a36a0000838802a37803612802f17803012802f17802c32802c37802836a0000c39802837802a36a0000539802a37801012800e1280091a18802f1780008026176c000000008006802617804213804013803e33a00b42800080351280403f38802c37802a37802837802412802f17801e12802f17801a32802c37802a36a0000c39802a378005802f1780008026176c000000002e7468656d6500a0087b80a837a0000680aa37a0fffa80ac3780a236a000062980150da0fffa34800837a0fffc34800a37a0fffe34800c37a0059c2e6c0f23cf800218302b80220d23cf800618302a80180d2523cf302b80100d23cf800418302a80060d22224280016c22224280006c0f802a372523802837cf802e172121aa80f20d2222426c0580040e80010e6c8f80041f800e0e8018174f800f1c80040e8018176c0380090a80040d8030186c8009198060186c6c0708090f0405060e0102030d000a0b0c0c08090a0405060001020d0e0f0b070301010102010101020101010201020202808386898c8f9295989b9ea1a4a7aaadb0b3b6b9bbbec1c3c6c9cbced0d2d5d7d9dbdee0e2e4e6e7e9ebeceef0f1f2f4f5f6f7f8f9fafbfbfcfdfdfefefefefefffefefefefefdfdfcfbfbfaf9f8f7f6f5f4f2f1f0eeecebe9e7e6e4e2e0dedbd9d7d5d2d0cecbc9c6c3c1bebbb9b6b3b0adaaa7a4a19e9b9895928f8c898683807d7a7774716e6b6865625f5c595653504d4a4745423f3d3a373532302e2b29272522201e1c1a1917151412100f0e0c0b0a09080706050504030302020202020102020202020303040505060708090a0b0c0e0f1012141517191a1c1e20222527292b2e303235373a3d3f4245474a4d505356595c5f6265686b6e7174777a7d007c82828282827c0030101010101010007c82027c8080fe007c82021c02827c000c14244484fe0400fe80807c02827c007c8280fc82827c007c82021e020202007c82827c82827c007c82827e02827c007c82027e82827e00fc8282fc8282fc007c82808080827c00fc8282828282fc007c8280f080827c007c8280f080808000101010fe10101000000000fe00000000105428c628541000100000fe0000103f40808080808080f8040202020202028080808080403f00020202020204f8003f7ffffffffffffff8fcfefefefefefeffffffffff7f3f00fefefefefefcf80038448282828282828282828282443800387cfefefefefefefefefefefe7c38003844828282443800387cfefefe7c38000000102810000000000028102800000080c0e0f0f8e01000
+      operator: is
+      at:
+        line: 137
+        column: 10
+        file: /home/rpaezbas/uxn-assembler/test/assembler.js
+      source: >2
+          const code = (await fs.readFile(path.join(__dirname, 'uxntal', '19.tal'))).toString()
+          assert.is(assemble(code), rom.toString('hex'))
+        ---------^
+        })
+      stack: /test/assembler.js:137:10
+      ...
+
+    1..1
+not ok 19 - calc # time=8376.166499ms
+            ok 20 - string # SKIP
+            ok 21 - relative label to main # SKIP
+    1..21
+not ok 1 - test/assembler.js # time=8397.227772ms
+
+1..1
+# time=8398.948855ms
+# failing=1
+
+--------------|---------|----------|---------|---------|-----------------------
+File          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
+--------------|---------|----------|---------|---------|-----------------------
+All files     |   96.81 |    95.58 |   95.23 |   96.81 |                       
+ assembler.js |   96.81 |    95.58 |   95.23 |   96.81 | 83-84,111-113,213-214 
+--------------|---------|----------|---------|---------|-----------------------

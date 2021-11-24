@@ -130,19 +130,24 @@ test('storyteller', async (assert) => {
   assert.is(assemble(code), rom.toString('hex'))
 })
 
-/*
 test('calc', async (assert) => {
   const assemble = requireUncached('../assembler.js')
   const rom = await fs.readFile(path.join(__dirname, 'roms', '19.rom'))
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '19.tal'))).toString()
   assert.is(assemble(code), rom.toString('hex'))
 })
-*/
 
 test('string', async (assert) => {
   const assemble = requireUncached('../assembler.js')
   const rom = await fs.readFile(path.join(__dirname, 'roms', '20.rom'))
   const code = (await fs.readFile(path.join(__dirname, 'uxntal', '20.tal'))).toString()
+  assert.is(assemble(code), rom.toString('hex'))
+})
+
+test('relative label to main', async (assert) => {
+  const assemble = requireUncached('../assembler.js')
+  const rom = await fs.readFile(path.join(__dirname, 'roms', '21.rom'))
+  const code = (await fs.readFile(path.join(__dirname, 'uxntal', '21.tal'))).toString()
   assert.is(assemble(code), rom.toString('hex'))
 })
 

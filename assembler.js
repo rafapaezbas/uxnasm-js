@@ -26,7 +26,7 @@ opCodes.forEach((op, i) => {
 })
 
 const hexadecimal = anyOfString('0123456789abdcef')
-const allowedChars = anyOfString('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_/><+*?!=,\\".')
+const allowedChars = anyOfString('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_/><+*?!=&,\\".')
 const opModifier = choice([char('k'), char('r'), char('2')])
 const word = many1(allowedChars)
 
@@ -35,7 +35,7 @@ tokens.comment = sequenceOf([char('('), everyCharUntil(char(')')), char(')')])
 tokens.macro = sequenceOf([char('%'), everyCharUntil(whitespace), whitespace, char('{'), everyCharUntil(char('}')), char('}')])
 tokens.zeroPageAddress = sequenceOf([char('.'), word])
 tokens.absoluteAddress = sequenceOf([char(';'), word])
-tokens.relativeAddress = sequenceOf([char(','), char('&'), word])
+tokens.relativeAddress = sequenceOf([char(','), word])
 tokens.pad = sequenceOf([char('|'), many(hexadecimal)])
 tokens.relativePad = sequenceOf([char('$'), many1(hexadecimal)])
 tokens.label = sequenceOf([char('@'), word])
@@ -63,7 +63,11 @@ f.comment = (e) => {
 
 f.label = (e, i, acc) => {
   currentLabel = e.value[1].join('')
-  labels.set(e.value[1].join(''), toHex(acc.length / 2))
+  if(currentPad < 256){
+    labels.set(e.value[1].join(''), toHex(currentPad))
+  }else{
+    labels.set(e.value[1].join(''), toHex(acc.length / 2))
+  }
 }
 
 f.zeroPageAddress = (e) => {
@@ -104,7 +108,13 @@ f.ops = (e) => {
 }
 
 f.word = (e) => {
-  return macros.get(e.value.join('')) // TODO throw if word doesnt exist
+  const value = macros.get(e.value.join('')) // TODO throw if word doesnt exist
+  if (value) {
+    return value
+  } else {
+    console.log(e)
+    throw new Error('Macro not found: ' + e.value.join(''))
+  }
 }
 
 f.pad = (e, i, acc) => {
@@ -139,13 +149,15 @@ f.absoluteAddress = (e, i, acc) => {
 }
 
 f.relativeAddress = (e, i, acc) => {
-  const label = labels.get(currentLabel + '/' + e.value[2].join(''))
+  const isRelative = e.value[1].indexOf('&') !== -1
+  const completeLabel = isRelative ? currentLabel + '/' + e.value[1].join('').substring(1) : e.value[1].join('')
+  const label = labels.get(completeLabel)
   if (label) {
     const distance = label - (acc.length / 2) - 3
     // if (distance > 126) TODO throw error
     return '80' + toHex(256 + (distance))
   } else {
-    nonResolvedRelativeAddresses.push({ label: currentLabel + '/' + e.value[2].join(''), pos: acc.length / 2 })
+    nonResolvedRelativeAddresses.push({ label: completeLabel, pos: acc.length / 2 })
     return '++++'
   }
 }
@@ -172,6 +184,8 @@ const assemble = (code) => {
   const firstPass = ast.reduce((acc, e, i) => {
     const next = f[e.type] !== undefined ? f[e.type](e, i, acc) : undefined
     if (next) {
+	    //console.log(e)
+	    //console.log(next)
       return acc + next
     } else {
       return acc
@@ -197,7 +211,8 @@ const replaceUnresolvedRelativeAddress = (s) => {
   nonResolvedRelativeAddresses.reverse()
   while (s.indexOf('++++') !== -1) {
     const label = nonResolvedRelativeAddresses.pop()
-    const distance = toHex((labels.get(label.label) - (label.pos + 3)))
+    const labelPos = typeof labels.get(label.label) === 'string' ? parseInt(labels.get(label.label), 16) : labels.get(label.label)
+    const distance = toHex(labelPos - (label.pos + 3))
     if (parseInt(distance, 16) > 128) {
       // TODO error label to far away
     }
