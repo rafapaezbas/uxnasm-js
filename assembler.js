@@ -15,15 +15,15 @@ const toHex = (i) => {
 }
 
 const opCodes = ['BRK', 'INC', 'POP', 'DUP', 'NIP', 'SWP', 'OVR', 'ROT', 'EQU',
-                 'NEQ', 'GTH', 'LTH', 'JMP', 'JCN', 'JSR', 'STH', 'LDZ', 'STZ',
-                 'LDR', 'STR', 'LDA', 'STA', 'DEI', 'DEO', 'ADD', 'SUB', 'MUL',
-                 'DIV', 'AND', 'ORA', 'EOR', 'SFT', 'LIT', 'LIT2']
+  'NEQ', 'GTH', 'LTH', 'JMP', 'JCN', 'JSR', 'STH', 'LDZ', 'STZ',
+  'LDR', 'STR', 'LDA', 'STA', 'DEI', 'DEO', 'ADD', 'SUB', 'MUL',
+  'DIV', 'AND', 'ORA', 'EOR', 'SFT', 'LIT', 'LIT2']
 
 const hexOpCodes = new Map()
 opCodes.forEach((op, i) => {
   if (op === 'LIT') {
     hexOpCodes.set('LIT', '80')
-  } else if(op === 'LIT2'){
+  } else if (op === 'LIT2') {
     hexOpCodes.set('LIT2', 'a0')
   } else {
     hexOpCodes.set(op, toHex(i))
@@ -70,7 +70,7 @@ const parser = sequenceOf([many(choice(Object.keys(tokens).map(e => tokens[e])))
 const f = []
 
 f.comment = (e) => {
-  return // comment :)
+  // comment :)
 }
 
 f.label = (e, i, acc) => {
@@ -203,7 +203,6 @@ const assemble = (code) => {
 }
 
 const resolveAddresses = (s) => {
-
   nonResolvedLiteralAbsoluteAddreses.reverse()
   while (s.indexOf(UNRESOLVED_ADDRESS) !== -1) {
     const label = nonResolvedLiteralAbsoluteAddreses.pop()
@@ -218,7 +217,7 @@ const resolveAddresses = (s) => {
   while (s.indexOf(UNRESOLVED_RELATIVE_ADDRESS) !== -1) {
     const label = nonResolvedRelativeAddresses.pop()
     const labelPos = typeof labels.get(label.label) === 'string' ? parseInt(labels.get(label.label), 16) : labels.get(label.label)
-    if(labelPos === undefined) labelDoesNotExistError(label)
+    if (labelPos === undefined) labelDoesNotExistError(label)
     const distance = toHex(labelPos - (label.pos + 3))
     if (parseInt(distance, 16) > 126) labelTooFarError(label)
     s = s.replace(UNRESOLVED_RELATIVE_ADDRESS, LIT + distance)
@@ -228,11 +227,11 @@ const resolveAddresses = (s) => {
 }
 
 const labelTooFarError = (label) => {
-  throw new Error("Label: " + label + "too far.")
+  throw new Error('Label: ' + label + 'too far.')
 }
 
 const labelDoesNotExistError = (label) => {
-  throw new Error("Label: " + label + "does not exist.")
+  throw new Error('Label: ' + label + 'does not exist.')
 }
 
 module.exports = assemble
