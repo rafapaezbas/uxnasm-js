@@ -1,17 +1,18 @@
-# Comments on uxn asm
-Commets within comments are not supported in original uxn asm
+# Uxnasm-js
 
-# Adresses
-Offset of -100. Example |0200 writes in 100
+200~ lines Javascript assembler for the [Uxntal language](https://wiki.xxiivv.com/site/uxntal.html).
 
-# TODO
-- Opcodes with 16bits, return and keep modes
-- Address handling
-- eof #DONE
-- Pretty print errors
-- hexadecimal PR to arcsecond ?
-- mail about @Console |10 [ $2 &invent &ad ] ??
-- what about this |10 @Console@ConsoleBis [ $2 &invent &ad ]
-- mail about ADDkkkrrr
-- ADD support for some chars in macro-names
+## Install
+
+``` bash
+npm install
+npm test # run unit tests included in ./test
+```
+
+## TODO
+* Write a bin definition in order to use the tool from cli.
+* Support **include**.
+* Improve error messages.
+* Clean up code.
+
 

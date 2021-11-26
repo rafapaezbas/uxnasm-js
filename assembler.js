@@ -14,16 +14,27 @@ const toHex = (i) => {
   return result
 }
 
-const opCodes = ['BRK', 'INC', 'POP', 'DUP', 'NIP', 'SWP', 'OVR', 'ROT', 'EQU', 'NEQ', 'GTH', 'LTH', 'JMP', 'JCN', 'JSR', 'STH', 'LDZ', 'STZ', 'LDR', 'STR', 'LDA', 'STA', 'DEI', 'DEO', 'ADD', 'SUB', 'MUL', 'DIV', 'AND', 'ORA', 'EOR', 'SFT', 'LIT']
+const opCodes = ['BRK', 'INC', 'POP', 'DUP', 'NIP', 'SWP', 'OVR', 'ROT', 'EQU',
+                 'NEQ', 'GTH', 'LTH', 'JMP', 'JCN', 'JSR', 'STH', 'LDZ', 'STZ',
+                 'LDR', 'STR', 'LDA', 'STA', 'DEI', 'DEO', 'ADD', 'SUB', 'MUL',
+                 'DIV', 'AND', 'ORA', 'EOR', 'SFT', 'LIT', 'LIT2']
 
 const hexOpCodes = new Map()
 opCodes.forEach((op, i) => {
-  if (op !== 'LIT') {
-    hexOpCodes.set(op, toHex(i))
-  } else {
+  if (op === 'LIT') {
     hexOpCodes.set('LIT', '80')
+  } else if(op === 'LIT2'){
+    hexOpCodes.set('LIT2', 'a0')
+  } else {
+    hexOpCodes.set(op, toHex(i))
   }
 })
+
+const LIT = '80'
+const LIT2 = 'a0'
+const UNRESOLVED_ADDRESS = '____'
+const UNRESOLVED_RELATIVE_ADDRESS = '===='
+const PAD = '0'
 
 const hexadecimal = anyOfString('0123456789abdcef')
 const allowedChars = anyOfString('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_/><+*?!=&,\\".')
@@ -59,6 +70,7 @@ const parser = sequenceOf([many(choice(Object.keys(tokens).map(e => tokens[e])))
 const f = []
 
 f.comment = (e) => {
+  return // comment :)
 }
 
 f.label = (e, i, acc) => {
@@ -72,7 +84,7 @@ f.label = (e, i, acc) => {
 
 f.zeroPageAddress = (e) => {
   const label = e.value[1].join('')
-  return '80' + labels.get(label)
+  return LIT + labels.get(label)
 }
 
 f.macro = (e) => {
@@ -92,23 +104,22 @@ f.literalShort = (e) => {
 }
 
 f.push = (e) => {
-  return '80' + e.value[1] + e.value[2]
+  return LIT + e.value[1] + e.value[2]
 }
 
 f.pushShort = (e) => {
-  return 'a0' + e.value[1] + e.value[2] + e.value[3] + e.value[4]
+  return LIT2 + e.value[1] + e.value[2] + e.value[3] + e.value[4]
 }
 
 f.ops = (e) => {
   const k = e.value.filter(e => e === 'k')[0] ? 0x80 : 0x00
   const r = e.value.filter(e => e === 'r')[0] ? 0x40 : 0x00
   const s = e.value.filter(e => e === '2')[0] ? 0x20 : 0x00
-  const op = (parseInt(hexOpCodes.get(e.value[0]), 16) + k + r + s).toString(16)
-  return op.length > 1 ? op : '0' + op
+  return toHex(parseInt(hexOpCodes.get(e.value[0]), 16) + k + r + s)
 }
 
 f.word = (e) => {
-  const value = macros.get(e.value.join('')) // TODO throw if word doesnt exist
+  const value = macros.get(e.value.join(''))
   if (value) {
     return value
   } else {
@@ -120,7 +131,7 @@ f.pad = (e, i, acc) => {
   const pad = parseInt(e.value[1].join(''), 16)
   currentPad = pad
   if (pad >= 256) {
-    return '0'.repeat((pad - 256) * 2)
+    return PAD.repeat((pad - 256) * 2)
   }
 }
 
@@ -128,7 +139,7 @@ f.relativePad = (e, i, acc) => {
   const pad = parseInt(e.value[1].join(''), 16)
   if (currentPad >= 256) {
     currentPad += pad
-    return '0'.repeat(pad * 2)
+    return PAD.repeat(pad * 2)
   } else {
     currentPad += pad
   }
@@ -140,10 +151,10 @@ f.absoluteAddress = (e, i, acc) => {
     const pad = labels.get(label)
     const page = toHex((Math.floor(parseInt(pad, 16) / 256) + 1))
     const offset = toHex(((parseInt(pad, 16) % 256)))
-    return 'a0' + page + offset
+    return LIT2 + page + offset
   } else {
     nonResolvedLiteralAbsoluteAddreses.push(label)
-    return 'a0____'
+    return LIT2 + UNRESOLVED_ADDRESS
   }
 }
 
@@ -153,11 +164,11 @@ f.relativeAddress = (e, i, acc) => {
   const label = labels.get(completeLabel)
   if (label) {
     const distance = label - (acc.length / 2) - 3
-    // if (distance > 126) TODO throw error
-    return '80' + toHex(256 + (distance))
+    if (distance > 126) labelTooFarError(label)
+    return LIT + toHex(256 + (distance))
   } else {
     nonResolvedRelativeAddresses.push({ label: completeLabel, pos: acc.length / 2 })
-    return '++++'
+    return UNRESOLVED_RELATIVE_ADDRESS
   }
 }
 
@@ -177,9 +188,9 @@ f.string = (e, i, acc) => {
 const assemble = (code) => {
   code = code.replace(/\[|\]/g, ' ')
   const context = parser.run(code)
-  if (context.isError) throw Error(context.error) // TODO pretty print this
+  if (context.isError) throw Error(context.error)
   let ast = context.result[0] // Since result[1] is endOfInput
-  ast = ast.filter(e => e.type !== undefined) // Filter non-token
+  ast = ast.filter(e => e.type !== undefined)
   const firstPass = ast.reduce((acc, e, i) => {
     const next = f[e.type] !== undefined ? f[e.type](e, i, acc) : undefined
     if (next) {
@@ -188,34 +199,40 @@ const assemble = (code) => {
       return acc
     }
   }, '')
-  return replaceUnresolvedRelativeAddress(replaceUnresolvedAddresses(firstPass))
+  return resolveAddresses(firstPass)
 }
 
-const replaceUnresolvedAddresses = (s) => {
+const resolveAddresses = (s) => {
+
   nonResolvedLiteralAbsoluteAddreses.reverse()
-  while (s.indexOf('____') !== -1) {
+  while (s.indexOf(UNRESOLVED_ADDRESS) !== -1) {
     const label = nonResolvedLiteralAbsoluteAddreses.pop()
     const pad = labels.get(label)
     const i = typeof pad === 'string' ? parseInt(pad, 16) : pad
     const page = toHex((Math.floor(i / 256) + 1))
     const offset = toHex(((i % 256)))
-    s = s.replace('____', page + offset)
+    s = s.replace(UNRESOLVED_ADDRESS, page + offset)
   }
+
+  nonResolvedRelativeAddresses.reverse()
+  while (s.indexOf(UNRESOLVED_RELATIVE_ADDRESS) !== -1) {
+    const label = nonResolvedRelativeAddresses.pop()
+    const labelPos = typeof labels.get(label.label) === 'string' ? parseInt(labels.get(label.label), 16) : labels.get(label.label)
+    if(labelPos === undefined) labelDoesNotExistError(label)
+    const distance = toHex(labelPos - (label.pos + 3))
+    if (parseInt(distance, 16) > 126) labelTooFarError(label)
+    s = s.replace(UNRESOLVED_RELATIVE_ADDRESS, LIT + distance)
+  }
+
   return s
 }
 
-const replaceUnresolvedRelativeAddress = (s) => {
-  nonResolvedRelativeAddresses.reverse()
-  while (s.indexOf('++++') !== -1) {
-    const label = nonResolvedRelativeAddresses.pop()
-    const labelPos = typeof labels.get(label.label) === 'string' ? parseInt(labels.get(label.label), 16) : labels.get(label.label)
-    const distance = toHex(labelPos - (label.pos + 3))
-    if (parseInt(distance, 16) > 128) {
-      // TODO error label to far away
-    }
-    s = s.replace('++++', '80' + distance)
-  }
-  return s
+const labelTooFarError = (label) => {
+  throw new Error("Label: " + label + "too far.")
+}
+
+const labelDoesNotExistError = (label) => {
+  throw new Error("Label: " + label + "does not exist.")
 }
 
 module.exports = assemble
